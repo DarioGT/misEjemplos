@@ -1,0 +1,24 @@
+{% extends "pages/rapports/base.html" %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr'} 
+
+
+{% block title_section %} / {% trans "rapports" %}  {% endblock %}
+{% block title %}{% trans "rapports" %}  {% endblock %}
+
+{% block progression %}{% trans "rapports" %}  {% endblock %}
+
+{% block menu_left %}
+			<h3>{% trans "rapports" %}</h3>
+			<ul class="nav">
+				<li><a href="#{{ cfg.base_url }}administration/user/add">Aucun rapport</a></li>
+			</ul>
+{% endblock %}
+
+{% block content %}
+	<p>
+		{% trans "page rapports intro" %}
+	</p>
+{% endblock %}

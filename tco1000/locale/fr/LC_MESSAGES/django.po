@@ -1,0 +1,591 @@
+msgid "site title"
+msgstr "Projet &eacute;l&eacute;ment de co&ucirc;t"
+
+msgid "add"
+msgstr "Ajouter"
+
+msgid "delete"
+msgstr "Supprimer"
+
+msgid "cancel"
+msgstr "Annuler"
+
+msgid "edit"
+msgstr "Modifier"
+
+msgid "welcome"
+msgstr "Bienvenue"
+
+msgid "rapports"
+msgstr "Rapports"
+
+msgid "logout"
+msgstr "Déconnexion"
+
+msgid "login"
+msgstr "Connexion"
+
+msgid "legend"
+msgstr "L&eacute;gende"
+
+msgid "general information"
+msgstr "Informations g&eacute;n&eacute;rales"
+
+msgid "free"
+msgstr "Libre"
+
+msgid "description"
+msgstr "Description"
+
+msgid "hypothese name"
+msgstr "Nom de l'hypoth&egrave;se"
+
+msgid "hypothese no"
+msgstr "No de l'hypoth&egrave;se"
+
+msgid "help"
+msgstr "Aide"
+
+msgid "copyright"
+msgstr "<a href='http://www.certae.org'>www.certae.org</a><br>Licence GPL v3"
+
+msgid "type"
+msgstr "Type"
+
+msgid "libre"
+msgstr "Libre"
+
+msgid "proprietaire"
+msgstr "Propri&eacute;taire"
+
+msgid "mixte"
+msgstr "Mixte"
+
+msgid "menu left parameter title lst"
+msgstr "Mesures de r&eacute;f&eacute;rence"
+
+msgid "menu left parameter lst"
+msgstr "Liste des Mesures de r&eacute;f&eacute;rence"
+
+################################################
+# page login
+################################################
+msgid "page login text"
+msgstr "Veuillez entrer vos informations afin que le syst&egrave;me vous autorise l'acc&egrave;s aux donn&eacute;es."
+
+msgid "page login error"
+msgstr "Les informations que vous avez entr&eacute;es ne permettent pas de vous identifier. Veuillez recommencer."
+
+msgid "username"
+msgstr "Nom d'utilisateur"
+
+msgid "password"
+msgstr "Mot de passe"
+
+################################################
+#menu haut
+################################################
+msgid "menu home"
+msgstr "Accueil"
+
+msgid "menu tco"
+msgstr "Base de r&eacute;f&eacute;rence"
+
+msgid "menu profil"
+msgstr "Votre compte"
+
+msgid "menu privileges"
+msgstr "Vos droits"
+
+msgid "menu scenario"
+msgstr "Mesures"
+
+msgid "menu mesures"
+msgstr "Mesures"
+
+msgid "menu rapports"
+msgstr "Rapports"
+
+msgid "menu admin"
+msgstr "Administration"
+
+
+################################################
+#page compte
+################################################
+msgid "menu profil changepassword"
+msgstr "Modifier votre mot de passe"
+
+msgid "menu profil rights"
+msgstr "Vos droits"
+
+msgid "page profil form changepassword password"
+msgstr "Nouveau mot de passe"
+
+
+msgid "page profil form changepassword intro"
+msgstr "Veuillez entrer un nouveau mot de passe."
+
+msgid "page profil form changepassword success"
+msgstr "Votre mot de passe a &eacute;t&eacute; modifi&eacute; avec succ&egrave;s."
+
+msgid "page profil form rights intro"
+msgstr "Cette page vous permet de visualiser vos droits dans le syst&egrave;me."
+
+msgid "page profil intro"
+msgstr "Bienvenue dans la page <b>Profil</b>.<br><br> Cette page vous permet d'effectuer des op&eacute;rations sur vos informations."
+
+#page default
+msgid "page default title"
+msgstr "Accueil"
+
+msgid "page default welcome"
+msgstr "Bienvenue sur l'outil de mesures est utilis&eacute; dans le cadre d'une &eacute;tude."
+
+########################################
+#PAGE mesures
+########################################
+msgid "menu mesures add"
+msgstr "Ajouter une mesure"
+
+msgid "menu mesures edit"
+msgstr "Modifier une mesure"
+
+msgid "menu mesures lst"
+msgstr "Liste des mesures"
+
+msgid "menu mesures delete"
+msgstr "Supprimer une mesure"
+
+msgid "edit mesure"
+msgstr "Modifier la mesure"
+
+
+########################################
+# page TCO
+########################################
+
+msgid "tco"
+msgstr "Base de r&eacute;f&eacute;rence"
+#msgstr "&Eacute;l&eacute;ments de co&ucirc;ts"
+
+
+msgid "page tco_lst intro"
+msgstr "Cette page sert &agrave; lister les &eacute;l&eacute;ments de co&ucirc;ts..<br><br>  La l&eacute;gende &agrave; vous permet de comprendre les op&eacute;rations reli&eacute;es aux images."
+
+msgid "page tco lst"
+msgstr "Liste hi&eacute;rarchique des &eacute;l&eacute;ments de co&ucirc;ts"
+
+msgid "page tco form parent_tco_id"
+msgstr "Nouveau Parent (id)"
+
+
+
+msgid "page tco_moveunder intro"
+msgstr "Cette page sert &agrave; d&eacute;placer un &eacute;l&eacute;ment de co&ucirc;t en dessous d'un autre &eacute;l&eacute;ment de co&ucirc;t. <br><br> Vous devez sp&eacute;cifier l'identifiant (id) du nouveau Parent de l'&eacute;l&eacute;ments de co&ucirc;ts.<br><br> NOTE: si vous inscrivez -1, l'&eacute;l&eacute;ments de co&ucirc;ts n'aura plus de parent."
+# legende tco
+
+msgid "legend tco add"
+msgstr "Ajouter un <b>&eacute;l&eacute;ment de co&ucirc;ts</b> en dessous"
+
+msgid "legend tco remove"
+msgstr "Supprimer l'<b>&eacute;l&eacute;ment de co&ucirc;t</b>"
+
+msgid "legend tco edit"
+msgstr "Modifier l'<b>&eacute;l&eacute;ment de co&ucirc;t</b>"
+
+msgid "legend tco parameter"
+msgstr "Voir les param&egrave;tres de l'<b>&eacute;l&eacute;ment de co&ucirc;t</b>"
+
+msgid "legend tco moveup"
+msgstr "Monter l'<b>&eacute;l&eacute;ment de co&ucirc;t</b> d'un niveau"
+
+msgid "legend tco movedown"
+msgstr "Abaisser l'<b>&eacute;l&eacute;ment de co&ucirc;t</b> d'un niveau"
+
+msgid "legend tco moveunder"
+msgstr "D&eacute;placer l'<b>&eacute;l&eacute;ment de co&ucirc;t</b> en dessous d'un autre <b>&eacute;l&eacute;ment de co&ucirc;t</b>"
+
+
+msgid "form tco edit success"
+msgstr "L'<b>&eacute;l&eacute;ment de co&ucirc;t</b> a &eacute;t&eacute; modifi&eacute; avec succ&egrave;s." 
+
+msgid "form tco delete success"
+msgstr "L'<b>&eacute;l&eacute;ment de co&ucirc;t</b> a &eacute;t&eacute; supprim&eacute; avec succ&egrave;s."
+
+
+msgid "form tco back to tco list"
+msgstr "Retour &agrave; la liste des &eacute;l&eacute;ments de co&ucirc;ts"
+
+
+msgid "form mesures add success"
+msgstr "La <b>mesure</b> a &eacute;t&eacute; ajout&eacute;e avec succ&egrave;s."
+
+msgid "form mesures edit success"
+msgstr "La <b>mesure</b> a &eacute;t&eacute; modifi&eacute;e avec succ&egrave;s."
+
+msgid "form mesures delete success"
+msgstr "La <b>mesure</b> a &eacute;t&eacute; supprim&eacute;e avec succ&egrave;s."
+
+msgid "form mesures back lst1"
+msgstr "Retour &agrave; la liste des mesures"
+
+msgid "form parametre delete intro"
+msgstr "Voulez-vous vraiment supprimer cette Mesure de r&eacute;f&eacute;rence?"
+
+msgid "form parametre delete success"
+msgstr "La mesure de r&eacute;f&eacute;rence a &eacute;t&eacute; supprim&eacute;e avec succ&egrave;s."
+
+msgid "form parametre add success"
+msgstr "La mesure de r&eacute;f&eacute;rence a &eacute;t&eacute; ajout&eacute;e avec succ&egrave;s."
+
+msgid "form parametre delete error"
+msgstr "La mesure de r&eacute;f&eacute;rence a n'existe pas."
+
+msgid "form parametre lst back"
+msgstr "Retour &agrave; la liste des mesures de r&eacute;f&eacute;rence"
+
+msgid "form parametre lst no parametre"
+msgstr "Aucune mesures de r&eacute;f&eacute;rence"
+
+########################################
+# menu TCO
+########################################
+msgid "menu tco lst"
+msgstr "Structure du CTP"
+#msgstr "Liste des &eacute;l&eacute;ments de co&ucirc;ts"
+
+msgid "menu tco add"
+msgstr "Ajouter un &eacute;l&eacute;ment de co&ucirc;t"
+
+msgid "menu tco delete"
+msgstr "Supprimer un &eacute;l&eacute;ment de co&ucirc;t"
+
+msgid "menu tco edit"
+msgstr "Modifier un &eacute;l&eacute;ment de co&ucirc;t"
+
+
+msgid "menu tco parametre add"
+msgstr "Ajouter une mesure de r&eacute;f&eacute;rence"
+
+msgid "menu tco parametre lst"
+msgstr "Liste des param&egrave;tres"
+
+msgid "menu left parameter delete"
+msgstr "Supprimer une mesure de r&eacute;f&eacute;rence"
+
+msgid "menu left parameter edit"
+msgstr "Modifier une mesure de r&eacute;f&eacute;rence"
+
+########################################
+# menu PROFIL ET SCENARIO
+########################################
+
+msgid "page mesure scenario lst"
+msgstr "Mesures du Sc&eacute;nario"
+
+msgid "menu profil lst"
+msgstr "Liste des Profils et Sc&eacute;narios"
+#msgstr "Liste des Profils"
+
+msgid "menu profil add"
+msgstr "Ajouter un Profil"
+
+msgid "menu profil edit"
+msgstr "Modifier un Profil"
+
+msgid "menu profil delete"
+msgstr "Supprimer un Profil"
+
+msgid "menu scenario add"
+msgstr "Ajouter un Sc&eacute;nario"
+
+msgid "menu scenario edit"
+msgstr "Modifier un Sc&eacute;nario"
+
+msgid "menu tco move under"
+msgstr "Déplacer un &eacute;l&eacute;ment de co&ucirc;t"
+
+msgid "menu scenario delete"
+msgstr "Supprimer un Sc&eacute;nario"
+
+msgid "menu profil_scenario add"
+msgstr "Ajouter un Sc&eacute;nario"
+
+msgid "menu profil_scenario lst"
+msgstr "Liste des Sc&eacute;narios"
+
+msgid "profil"
+msgstr "Mesures"
+#msgstr "Profil"
+
+msgid "scenario"
+msgstr "Sc&eacute;nario"
+
+
+msgid "form scenario add success"
+msgstr "Le <b>Sc&eacute;nario</b> a &eacute;t&eacute; avec succ&egrave;s"
+
+msgid "form scenario delete success"
+msgstr "Le <b>Sc&eacute;nario</b> a &eacute;t&eacute; supprim&eacute; avec succ&egrave;s"
+
+msgid "form scenario edit success"
+msgstr "Le <b>Sc&eacute;nario</b> a &eacute;t&eacute; modifi&eacute; avec succ&egrave;s"
+
+msgid "form profil add success"
+msgstr "Le <b>Profil</b> a &eacute;t&eacute; avec succ&egrave;s"
+
+msgid "form profil delete success"
+msgstr "Le <b>Profil</b> a &eacute;t&eacute; supprim&eacute; avec succ&egrave;s"
+
+msgid "form profil edit success"
+msgstr "Le <b>Profil</b> a &eacute;t&eacute; modifi&eacute; avec succ&egrave;s"
+
+msgid "form profil back lst"
+msgstr "Retour &agrave; la liste des Profils"
+
+msgid "form mesures back lst"
+msgstr "Retour &agrave; la liste des Mesures"
+
+
+msgid "page profil_scenario_lst intro"
+msgstr "Cette page sert &agrave; lister les profils et sc&eacute;narios de mani&egrave;re hi&eacute;rarchique.<br><br>  La l&eacute;gende &agrave; vous permet de distintiguer rapidement un Profil et un Sc&eacute;nario."
+
+msgid "page profil_scenario_lst liste"
+msgstr "Profils et Sc&eacute;narios"
+#msgstr "Liste hi&eacute;rarchique des Profils et Sc&eacute;narios"
+
+
+msgid "page profil delete"
+msgstr "Voulez-vous vraiment supprimer ce Profil?"
+
+msgid "page scenario delete"
+msgstr "Voulez-vous vraiment supprimer ce Sc&eacute;nario?"
+
+msgid "form label name"
+msgstr "Nom"
+
+msgid "form label occurence"
+msgstr "Nombre d'occurences"
+
+msgid "form label l_p"
+msgstr "Libre?"
+
+msgid "form label description"
+msgstr "Description"
+
+msgid "form label documentation"
+msgstr "Documentation"
+
+msgid "legend add scenario"
+msgstr "Lien permettant d'ajouter un Sc&eacute;nario"
+
+msgid "legend see mesure"
+msgstr "Lien permettant de voir les mesures pour le Sc&eacute;nario"
+
+msgid "title profil_scenario"
+msgstr "Mesures"
+#msgstr "Profils et Sc&eacute;narios"
+
+msgid "title profil_scenario lst_tco"
+msgstr "&eacute;l&eacute;ments de couts"
+
+msgid "page mesures delete"
+msgstr "Voulez-vous vraiment supprimer cette mesure ?"
+
+msgid "page mesures delete success"
+msgstr "La mesure a ete supprimee avec succes."
+
+msgid "total cost"
+msgstr "Co&ugrave;t total"
+
+msgid "column mesure edit"
+msgstr "Modifier les mesures"
+
+
+msgid "page mesure lookup tco parameter"
+msgstr "Lookup Base de reference"
+
+#######################################################
+# Section  aide
+#######################################################
+
+
+msgid "page aide intro"
+msgstr "Bienvenue dans la page Aide. Vous trouverez des tutoriaux vous expliquant comment utiliser l'application."
+
+#######################################################
+# Section  administration
+#######################################################
+
+msgid "page admin intro"
+msgstr "Bienvenue dans la partie administation.<br><br>Le menu de gauche vous permet d'effectuer des op&eacute;rations particuli&egrave;res."
+
+#menu de gauche
+msgid "admin"
+msgstr "Administration"
+
+msgid "menu admin user title"
+msgstr "Utilisateurs"
+
+msgid "menu admin user list"
+msgstr "Liste des utilisateurs"
+
+msgid "menu admin user add"
+msgstr "Ajouter un utilisateur"
+
+msgid "menu admin user edit"
+msgstr "Modifier un utilisateur"
+
+
+msgid "tab user username"
+msgstr "Nom d'utilisateur"
+
+msgid "tab user superuser"
+msgstr "Administateur?"
+
+msgid "superuser"
+msgstr "Super Utilisateur"
+
+msgid "right superuser"
+msgstr "Est Super Admin?"
+
+msgid "right tco"
+msgstr "&eacute;l&eacute;ments de co&ucirc;ts"
+
+msgid "right parameter"
+msgstr "Param&egrave;tres"
+
+msgid "right profil"
+msgstr "Profils"
+
+msgid "right scenario"
+msgstr "Sc&eacute;narios"
+
+msgid "right mesure"
+msgstr "Mesures"
+
+msgid "right rapport"
+msgstr "Rapports"
+
+msgid "rights"
+msgstr "Droits"
+
+msgid "right"
+msgstr "Droit"
+
+msgid "read"
+msgstr "Lecture"
+
+msgid "write"
+msgstr "&Eacute;crire"
+
+msgid "username taken"
+msgstr "Ce nom d'utilisateur est d&eacute;j&agrave; pris."
+
+msgid "form user add success"
+msgstr "L'utilisateur  &eacute;t&eacute; cr&eacute;&eacute; avec succ&egrave;s"
+
+msgid "form user edit success"
+msgstr "L'utilisateur  &eacute;t&eacute; modifi&eacute; avec succ&egrave;s"
+
+msgid "form user delete success"
+msgstr "L'Expert  &eacute;t&eacute; supprim&eacute; avec succ&egrave;s"
+
+msgid "form user expert add success"
+msgstr "L'Expert  &eacute;t&eacute; cr&eacute;&eacute; avec succ&egrave;s"
+
+msgid "form user expert edit success"
+msgstr "L'Expert  &eacute;t&eacute; modifi&eacute; avec succ&egrave;s"
+
+msgid "form user expert delete success"
+msgstr "L'Expert  &eacute;t&eacute; supprim&eacute; avec succ&egrave;s"
+
+
+msgid "page user delete"
+msgstr "Voulez-vous vraiment supprimer cet utilisateur?"
+
+msgid "form user back lst"
+msgstr "Retour &agrave; la liste des Utilisateurs"
+
+msgid "page admin menu expert"
+msgstr "Gestion des experts"
+
+msgid "page admin menu expert list"
+msgstr "Liste des experts"
+
+msgid "page admin menu expert add"
+msgstr "Ajouter un expert"
+
+msgid "page admin menu expert edit"
+msgstr "Modifier un expert"
+
+msgid "page admin menu expert delete"
+msgstr "Supprimer un expert"
+
+
+
+#######################################################
+# Section Rapports
+#######################################################
+msgid "page rapports intro"
+msgstr "Cette page sert &agrave; g&eacute;n&eacute;rer des rapports sur l'ensemble des donn&eacute;es recueillies."
+
+#######################################################
+# Section  parametre
+#######################################################
+msgid "l_p" 
+msgstr "Libre?"
+
+msgid "annee1"
+msgstr "Ann&eacute;e 1"
+
+msgid "annee2"
+msgstr "Ann&eacute;e 2"
+msgid "annee3"
+msgstr "Ann&eacute;e 3"
+msgid "annee4"
+msgstr "Ann&eacute;e 4"
+msgid "annee5"
+msgstr "Ann&eacute;e 5"
+msgid "annee6"
+msgstr "Ann&eacute;e 6"
+msgid "annee7"
+msgstr "Ann&eacute;e 7"
+msgid "annee8"
+msgstr "Ann&eacute;e 8"
+msgid "annee9"
+msgstr "Ann&eacute;e 9"
+msgid "annee10"
+msgstr "Ann&eacute;e 10"
+msgid "annee11"
+msgstr "Ann&eacute;e 11"
+msgid "annee12"
+msgstr "Ann&eacute;e 12"
+msgid "annee13"
+msgstr "Ann&eacute;e 13"
+msgid "annee14"
+msgstr "Ann&eacute;e 14"
+msgid "annee15"
+msgstr "Ann&eacute;e 15"
+msgid "annee16"
+msgstr "Ann&eacute;e 16"
+msgid "annee17"
+msgstr "Ann&eacute;e 17"
+msgid "annee18"
+msgstr "Ann&eacute;e 18"
+msgid "annee19"
+msgstr "Ann&eacute;e 19"
+msgid "annee20"
+msgstr "Ann&eacute;e 20"
+
+#######################################################
+# Section  Droits insufisants
+#######################################################
+msgid "invalid_right title"
+msgstr "Droits insufisants"
+
+msgid "invalid_right text"
+msgstr "Le syst&egrave;me ne vous autorise pas &agrave; consulter la page que vous avez demand&eacute; puisque vos droits sont insufisants. <br><br> Veuillez consulter l'administration du sys&egrave;me pour des informations suppl&eacute;l&eacute;mentaires."
+
+

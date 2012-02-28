@@ -1,0 +1,110 @@
+.treeview, .treeview ul { 
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.treeview ul {
+	background-color: white;
+	margin-top: 4px;
+}
+
+.treeview .hitarea {
+	background: url(images/treeview-default.gif) -64px -25px no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left: -16px;
+	float: left;
+	cursor: pointer;
+}
+/* fix for IE6 */
+* html .hitarea {
+	display: inline;
+	float:none;
+}
+
+.treeview li { 
+	margin: 0;
+	padding: 3px 0pt 3px 16px;
+}
+
+.treeview a.selected {
+	background-color: #eee;
+}
+
+#treecontrol { margin: 1em 0; display: none; }
+
+.treeview .hover { color: red; cursor: pointer; }
+
+.treeview li { background: url(images/treeview-default-line.gif) 0 0 no-repeat; }
+.treeview li.collapsable, .treeview li.expandable { background-position: 0 -176px; }
+
+.treeview .expandable-hitarea { background-position: -80px -3px; }
+
+.treeview li.last { background-position: 0 -1766px }
+.treeview li.lastCollapsable, .treeview li.lastExpandable { background-image: url(images/treeview-default.gif); }  
+.treeview li.lastCollapsable { background-position: 0 -111px }
+.treeview li.lastExpandable { background-position: -32px -67px }
+
+.treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea { background-position: 0; }
+
+.treeview-red li { background-image: url(images/treeview-red-line.gif); }
+.treeview-red .hitarea, .treeview-red li.lastCollapsable, .treeview-red li.lastExpandable { background-image: url(images/treeview-red.gif); } 
+
+.treeview-black li { background-image: url(images/treeview-black-line.gif); }
+.treeview-black .hitarea, .treeview-black li.lastCollapsable, .treeview-black li.lastExpandable { background-image: url(images/treeview-black.gif); }  
+
+.treeview-gray li { background-image: url(images/treeview-gray-line.gif); }
+.treeview-gray .hitarea, .treeview-gray li.lastCollapsable, .treeview-gray li.lastExpandable { background-image: url(images/treeview-gray.gif); } 
+
+.treeview-famfamfam li { background-image: url(images/treeview-famfamfam-line.gif); }
+.treeview-famfamfam .hitarea, .treeview-famfamfam li.lastCollapsable, .treeview-famfamfam li.lastExpandable { background-image: url(images/treeview-famfamfam.gif); } 
+
+
+.filetree li { padding: 3px 0 2px 16px; display:block; margin:0; }
+.filetree span.folder, .filetree span.file { padding: 1px 0 1px 16px; }
+.filetree span.folder { background: url(images/folder.gif) 0 0 no-repeat;}
+.filetree li.expandable span.folder { background: url(images/folder-closed.gif) 0 0 no-repeat; }
+.filetree span.file { background: url(images/file.gif) 0 0 no-repeat; }
+
+.filetree span.profil { background: url(images/legende1.jpg) 0 0 no-repeat;}
+.filetree span.scenario { background: url(images/legende2.jpg) 0 0 no-repeat; }
+
+.filetree li span {display:inline;margin:0;padding:0 0 0 20px;  }
+
+.filetree {margin:0;padding:0;} 
+
+.filetree li {}
+
+.filetree .title { background:none;float:left;padding:3px 0; }
+
+
+.filetree .title:hover, .filetree .title2:hover { background:url(/images/tree-hover-bg.gif) bottom left repeat-x ; }
+.filetree  img {border:0;; background:#FFFFFF;}
+
+.filetree li.niveau-1 { width:600px;}
+.filetree li.niveau-1 div.title { width:600px; }
+.filetree li.niveau-2 { width:584px;}
+.filetree li.niveau-2 div.title { width:584px; }
+.filetree li.niveau-3 { width:568px;}
+.filetree li.niveau-3 div.title { width:568px; }
+.filetree li.niveau-4 { width:552px;}
+.filetree li.niveau-4 div.title { width:552px; }
+.filetree li.niveau-5 { width:536px;}
+.filetree li.niveau-5 div.title { width:536px; }
+.filetree li.niveau-6 { width:520px;}
+.filetree li.niveau-6 div.title { width:520px; }
+
+#popup tco
+.filetree li.niveau-popup-1 { width:300px;}
+.filetree li.niveau-popup-1 div.title { width:300px; }
+.filetree li.niveau-popup-2 { width:284px;}
+.filetree li.niveau-popup-2 div.title { width:284px; }
+.filetree li.niveau-popup-3 { width:268px;}
+.filetree li.niveau-popup-3 div.title { width:268px; }
+.filetree li.niveau-popup-4 { width:252px;}
+.filetree li.niveau-popup-4 div.title { width:252px; }
+.filetree li.niveau-popup-5 { width:236px;}
+.filetree li.niveau-popup-5 div.title { width:236px; }
+.filetree li.niveau-popup-6 { width:220px;}
+.filetree li.niveau-popup-6 div.title { width:220px; }

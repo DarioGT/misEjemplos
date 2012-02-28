@@ -1,0 +1,97 @@
+.icon-user {
+    background-image: url(../images/user.png) !important;
+}
+
+.icon-user-add {
+    background-image: url(../images/user_add.gif) !important;
+}
+
+.icon-save {
+    background-image: url(../images/save.gif) !important;
+}
+
+.icon-reset {
+    background-image: url(../images/stop.png) !important;
+}
+
+.icon-grid {
+    background-image: url(../images/grid.png) !important;
+}
+
+.icon-add {
+    background-image: url(../images/add.png) !important;
+}
+
+.icon-delete {
+    background-image: url(../images/delete.png) !important;
+}
+
+.icon-reload {
+    background-image: url(../images/arrow_refresh.png ) !important;
+}
+
+.icon-key {
+    background-image: url(../images/key.png ) !important;
+}
+
+.icon-ok {
+    background-image: url(../images/tick.png ) !important;
+}
+
+.icon-question {
+    background-image: url(../images/question.gif ) !important;
+}
+
+
+
+.ERR_EXIST .x-grid-cell {
+    background-color: #FBCD52 !important;
+}
+
+.ERR_NOEXIST .x-grid-cell {
+    background-color: #FF8E79 !important;
+}
+
+.ERR_ADD .x-grid-cell {
+    background-color: #DC89FF !important;
+}
+
+.ERR_UPD .x-grid-cell {
+    background-color: #ABBEFF !important;
+}
+
+.ERR_DEL .x-grid-cell {
+    background-color: #D0978D !important;
+}
+
+.NEW_ROW .x-grid-cell {
+	background-color: #FFF98B !important;
+}
+
+.x-grid-center-icon{
+   display:block; 
+   margin:0 auto; 
+   text-align:center;
+   cursor: pointer;
+}
+
+.line-through{
+    text-decoration:line-through;
+}
+
+/* style rows on mouseover */
+.x-grid-row-over .x-grid-cell-inner {
+    font-weight: bold;
+}
+
+
+/* --------------------------------------  login --------------------  */ 
+
+* {
+    font-family:Verdana, Arial, Trebuchet ms;
+    font-size:12px;
+}
+
+.icon-loading {
+    background: transparent url(../images//loading.gif) no-repeat 1px 2px;
+}

@@ -1,0 +1,61 @@
+<html>
+    <head>
+
+        <title>{% block title %}Hello{% endblock %}</title>
+          
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        
+        <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-3.1.0/resources/css/ext-all.css" /> 
+        <link rel="stylesheet" type="text/css" href="/apps/main/static/css/styles.css" />  
+
+        <link rel="stylesheet" type="text/css" href="/core/static/css/famfamfam.css" />  
+        
+        <script type="text/javascript" src="http://extjs.cachefly.net/ext-3.1.0/adapter/ext/ext-base.js"></script> 
+
+        {% if debug %}
+            <script type="text/javascript" src="http://extjs.cachefly.net/ext-3.1.0/ext-all-debug.js"></script> 
+        {% else %}
+            <script type="text/javascript" src="http://extjs.cachefly.net/ext-3.1.0/ext-all.js"></script> 
+        {% endif %}
+        
+
+        <script type="text/javascript" src="http://extjs.cachefly.net/ext-3.1.0/src/locale/ext-lang-fr.js"></script> 
+                
+        {% block extrahead %}{% endblock %}
+             
+          <script language="javascript">
+               if(window.console && window.console.dir){ 
+                    // firebug detected
+                    console.log("FireBug detected. Please disable to improve performance");
+               }
+               else {
+                    var console = {
+                        'log':function(){}
+                    };
+               }
+               
+               // dynamic load a JS
+               function load_src(src) {
+                    var DSLScript  = document.createElement("script");
+                    DSLScript.src  = src;
+                    DSLScript.type = "text/javascript";
+                    document.body.appendChild(DSLScript);
+                    document.body.removeChild(DSLScript);
+                   // console.log('loaded ' + src);
+                }
+                
+            </script>
+            <script language="javascript">
+                Ext.BLANK_IMAGE_URL = "http://extjs.cachefly.net/ext-3.1.0/resources/images/default/s.gif";
+            </script>
+    </head>
+    <body> 
+    
+        {% block content %}
+        <div id="main"></div>
+        {% endblock %}
+   
+    </body> 
+    
+</html>
+    

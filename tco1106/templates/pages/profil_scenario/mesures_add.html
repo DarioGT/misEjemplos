@@ -1,0 +1,327 @@
+{% extends "pages/profil_scenario/base.html" %}
+{% load buildtcotree %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr' %}
+
+{% block content %}
+	{% if success == 0 %}
+		<div class="form">
+				{% if errorMsg  %}
+				<div style="color:red;">
+					<img width="16" height="16"  src="{{ cfg.base_url }}images/delete.gif" />&nbsp;&nbsp;{{ errorMsg }}
+				<br />
+				<br />
+				<br />
+				</div>
+				{% endif %}
+				<form name="tco" method="post" action="">{% csrf_token %}
+		        <div id="container-1">
+		            <ul>
+		                <li><a href="#fragment-1"><span>G&eacute;n&eacute;ral</span></a></li>
+		                <li><a href="#fragment-2"><span>Valeurs</span></a></li>
+		                <li><a href="#fragment-3"><span>Documentation</span></a></li>
+		            </ul>
+		            <div id="fragment-1">
+						<table border="0" cellspacing="0" cellpadding="0" class="form">
+							<tr>
+								<td width="100" align="right" valign="top"><label for="id_description">No. Param&egrave;tre</label></td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left"><input type="text" value="{{ parametre_id }}" id="parametre" name="parametre" /></td>
+								<td align="left"><button id="btnSelectParameter">S&eacute;lectionner un parametre</button></td>
+							</tr>
+							<tr>
+								<td width="100" align="right" valign="top">{{ form.description.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.description }}</td>
+								<td align="left">{{ form.description.errors }}</td>
+							</tr>				
+						</table>
+		            </div>
+		            <div id="fragment-2">
+				            <table border="0" cellspacing="0" cellpadding="0" class="form">		
+				            <tr>
+								<td width="100" align="right" valign="top">{{ form.annee1.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee1 }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee2.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee2 }}</td>
+								<td align="left">{{ form.annee2.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee3.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee3 }}</td>
+								<td align="left">{{ form.annee3.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee4.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee4 }}</td>
+								<td align="left">{{ form.annee4.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee5.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee5 }}</td>
+								<td align="left">{{ form.annee5.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee6.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee6 }}</td>
+								<td align="left">{{ form.annee6.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee7.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee7 }}</td>
+								<td align="left">{{ form.annee7.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee8.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee8 }}</td>
+								<td align="left">{{ form.annee8.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee9.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee9 }}</td>
+								<td align="left">{{ form.annee9.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee10.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee10 }}</td>
+								<td align="left">{{ form.annee10.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee11.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee11 }}</td>
+								<td align="left">{{ form.annee11.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee12.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee12 }}</td>
+								<td align="left">{{ form.annee12.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee13.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee13 }}</td>
+								<td align="left">{{ form.annee13.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee14.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee14 }}</td>
+								<td align="left">{{ form.annee14.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee15.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee15 }}</td>
+								<td align="left">{{ form.annee15.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee16.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee16 }}</td>
+								<td align="left">{{ form.annee16.errors }}</td>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee17.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee17 }}</td>
+								<td align="left">{{ form.annee17.errors }}</td>
+							</tr>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee18.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee18 }}</td>
+								<td align="left">{{ form.annee18.errors }}</td>
+							</tr>
+							</tr>
+												<tr>
+								<td width="100" align="right" valign="top">{{ form.annee19.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee19 }}</td>
+								<td align="left">{{ form.annee19.errors }}</td>
+							</tr>
+							<tr>
+								<td width="100" align="right" valign="top">{{ form.annee20.label_tag }}</td>
+								<td width="10" align="center" valign="top">:</td>
+								<td align="left">{{ form.annee20 }}</td>
+								<td align="left">{{ form.annee20.errors }}</td>
+							</tr>
+				            </table>
+		            
+		            </div>
+		            <div id="fragment-3">
+		            	<table border="0" cellspacing="0" cellpadding="0" class="form">
+						<tr>
+						<td width="100" align="right" valign="top">{{ form.documentation.label_tag }}</td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.documentation }}</td>
+						<td align="left">{{ form.documentation.errors }}</td>
+						</tr>
+						</table>
+		            </div>
+		        </div>
+				<br>
+				<table align="center" class="normal">
+					<tr>
+						<td>
+							<input type="submit" value="{% trans "add" %}" />
+						</td>
+						<td>
+							<input type="submit" name="action" value="{% trans "cancel" %}" />
+						</td>
+					</tr>
+				</table>
+				{% if form.errors %}
+					<style type="text/css">
+					</style>
+				{% endif %}
+			</form>
+		</div>
+	{% else %}
+		<span class="success">{% trans "form mesures add success" %}</span>
+		<br>
+		<br>
+		<br>
+		<form name="tco_lst" method="get" action="{{ cfg.base_url }}profil_scenario/{{ cfg.profil_id }}/scenario/{{ cfg.scenario_id }}/mesures">
+			<input type="submit" value="{% trans "form mesures back lst" %}" />
+		</form>
+	{% endif %}
+{% endblock %}
+{% block javascript  %}
+	<link rel="stylesheet" href="{{ cfg.base_url }}javascript/tabs/jquery.tabs.css" type="text/css" />
+	<script src="{{ cfg.base_url }}javascript/tabs/jquery-1.1.3.1.pack.js" type="text/javascript"></script>
+	<script src="{{ cfg.base_url }}javascript/tabs/jquery.history_remote.pack.js" type="text/javascript"></script>
+	
+  	<script src="{{ cfg.base_url }}javascript/tabs/jquery.tabs.pack.js" type="text/javascript"></script>
+  	
+  	
+  	<script src="{{ cfg.base_url }}javascript/facebox/facebox.js" type="text/javascript"></script>
+  	<link rel="stylesheet" href="{{ cfg.base_url }}javascript/facebox/facebox.css" media="screen" rel="stylesheet" /></script>
+  	<link rel="stylesheet" href="{{ cfg.base_url }}javascript/treeview/jquery.treeview.css" type="text/css" />
+ 
+  	<script type="text/javascript" src="{{ cfg.base_url }}javascript/treeview/jquery.treeview.js"></script>
+  	
+  	
+  <style type="text/css">
+  	#content-lst-tco { height:400px; overflow:auto; }
+  </style>
+  <script type="text/javascript">
+	 var showTco = function() {
+		 jQuery.facebox(function() {
+			  jQuery.get('{{ cfg.base_url }}profil_scenario/{{ cfg.profil_id }}/scenario/{{ cfg.scenario_id }}/mesures/lst_tco', function(data) {
+			    jQuery.facebox('<div id="content-lst-tco"><h2>Etape 1 de 2 : Veuillez cliquer sur un element de cout.</h2><br>' + data + '</div>')
+			  })
+			}) 
+	}
+	
+	
+	 var showTcoParametre = function(tcoId) {
+		 jQuery.facebox(function() {
+			  jQuery.get('{{ cfg.base_url }}profil_scenario/{{ cfg.profil_id }}/scenario/{{ cfg.scenario_id }}/mesures/lst_tco_parametres/' + tcoId, function(data) {
+			    jQuery.facebox('<div id="content-lst-tco"><h2>Etape 2 de 2 : Veuillez cliquer sur un parametre</h2><br>' + data + '</div>')
+			  })
+			}) 
+			
+	 }		
+			
+	$(document).ready(function(){
+			  tabs = $('#container-1').tabs();
+		
+			  $('#btnSelectParameter').click( 
+						function()
+						{
+							showTco()
+							return false;
+						}
+					   );
+			  
+	});
+		
+	
+	var tcoSelected = function(tcoId) { 
+		$('#facebox').fadeOut( 'slow',function()
+				{
+					showTcoParametre(tcoId);
+				}
+			)
+		}
+
+
+	var ajaxFillFormYearsValues = function(parametreId) {
+		$.ajax({
+		      url: "{{ cfg.base_url }}profil_scenario/{{ cfg.profil_id }}/scenario/{{ cfg.scenario_id }}/mesures/get_parametre_infos/" + parametreId,
+		      global: false,
+		      type: "GET",
+		      data: '',
+		      //dataType: "json",
+		      async:false,
+		      success: function(msg){
+				eval(msg);
+
+				document.getElementById('parametre').value = parametreId;
+				
+				var i = 0;
+				for(i = 1; i < 21;i++) {
+					document.getElementById('id_annee'+i).value = eval( "parametre.year"+i );
+				}
+		      }
+		   }
+		)
+	}
+	
+	var tcoParametreSelected = function(parametreId) {
+		$('#facebox').fadeOut( 'slow',function() 
+				{
+			 		ajaxFillFormYearsValues(parametreId);
+				}
+		);
+	}
+  
+  </script>
+{% endblock  %}
+{% block title %} 
+{% trans "menu mesures add" %}
+{% endblock %}
+
+{% block progression %} 
+<a href="{{ cfg.base_url }}profil_scenario/">{% trans "title profil_scenario" %}</a>
+/
+<a href="{{ cfg.base_url }}profil_scenario/{{ scenario_id }}/edit_scenario">{% trans "scenario" %}</a>
+/
+
+<a href="{{ cfg.base_url }}profil_scenario/{{ scenario_id }}/mesures">{% trans "menu mesures" %}</a>
+/
+{% trans "menu mesures add" %}
+
+{% endblock %}
+
+{% block menu_left %}
+			<h3>{% trans "profil" %}</h3>
+			<ul class="nav">
+				<li><a href="{{ cfg.base_url }}profil_scenario/add" class="add">{% trans "menu profil add" %}</a></li>
+				<li><a href="{{ cfg.base_url }}profil_scenario/">{% trans "menu profil lst" %}</a></li>
+			</ul>
+			
+			<h3>{% trans "menu mesures" %}</h3>
+			<ul class="nav">
+				<li><span class="active">{% trans "menu mesures add" %}</span></li>
+				<li><a href="{{ cfg.base_url }}profil_scenario/{{ cfg.profil_id }}/scenario/{{ cfg.scenario_id }}/mesures" class="list">{% trans "menu mesures lst" %}</a></li>
+			</ul>
+			
+{% endblock %}

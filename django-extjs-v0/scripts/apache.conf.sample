@@ -1,0 +1,31 @@
+<VirtualHost *:80>
+        ServerName django.project.com
+
+        ErrorLog  /var/log/apache2/error-django.project.com.log
+        CustomLog /var/log/apache2/access-django.project.com.log combined
+
+        Alias /core/static /home/user/django/project/core/static
+        <Directory "/core/static">
+                Order deny,allow
+                Options -Indexes
+                deny from all
+                Options +FollowSymLinks
+                <FilesMatch "\.(flv|gif|jpg|jpeg|png|ico|swf|js|css|pdf|txt|htm|html|json)$">
+                        allow from all
+                </FilesMatch>
+        </Directory>
+ 
+        AliasMatch ^/apps/([^/]+)/static/(.*) /home/user/django/project/apps/$1/static/$2
+        <DirectoryMatch "^/home/user/django/project/apps/([^/]+)/static/*">
+                Order deny,allow
+                Options -Indexes
+                deny from all
+                Options +FollowSymLinks
+                <FilesMatch "\.(flv|gif|jpg|jpeg|png|ico|swf|js|css|pdf|txt|htm|html|json)$">
+                        allow from all
+                </FilesMatch>
+        </DirectoryMatch>
+
+        WSGIScriptAlias / /home/user/django/project/scripts/apache.wsgi
+
+</VirtualHost>

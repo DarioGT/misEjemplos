@@ -1,0 +1,162 @@
+{% extends "pages/tco/base.html" %}
+{% load buildtcotree %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr' %}
+
+{% block content %}
+	{% if success == 0 %}
+		<p>
+			{% trans "page tco_moveunder intro" %}
+		</p>
+		<br />
+		
+		<div class="form" style="border-top: 1px solid black; padding-top:20px;">
+			<form name="edit" method="post" action="">{% csrf_token %}
+				{% transformtohiddenfield form.tco_id %}
+				{% if form.errors %}
+					<style type="text/css">
+						{% if form.titre.errors %}#id_titre { border:1px solid red;  }{% endif  %}
+					</style>
+				{% endif %}
+				<table border="0" cellspacing="0" cellpadding="0" class="form">
+					<tr>
+						<td width="130" align="right" valign="top">{% trans "page tco form parent_tco_id" %}</td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.parent_tco_id }}</td>
+						<td><button id="btnSelectParameter">Lookup Element de couts</button></td>
+						<td align="left">{{ form.parent_tco_id.errors }}</td>
+					</tr>				
+					<tr>
+						<td align="center" colspan="4">
+							<br>
+							<table align="center" class="normal">
+								<tr>
+									<td>
+										<input type="submit" value="{% trans "edit" %}" />
+									</td>
+									<td>
+										<input type="submit" name="action" value="{% trans "cancel" %}" />
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	{% else %}
+		<span class="success">TCO modifi&eacute; avec succ&egrave;s</span>
+				<br>
+		<br>
+		<br>
+		<form name="tco_lst" method="get" action="{{ cfg.base_url }}tco">
+			<input type="submit" value="Retour &agrave; la liste des TCO">
+		</form>
+	{% endif %}
+{% endblock %}
+{% block javascript  %}
+	<link rel="stylesheet" href="{{ cfg.base_url }}javascript/tabs/jquery.tabs.css" type="text/css" />
+	<script src="{{ cfg.base_url }}javascript/tabs/jquery-1.1.3.1.pack.js" type="text/javascript"></script>
+	<script src="{{ cfg.base_url }}javascript/tabs/jquery.history_remote.pack.js" type="text/javascript"></script>
+	
+  	<script src="{{ cfg.base_url }}javascript/tabs/jquery.tabs.pack.js" type="text/javascript"></script>
+  	
+  	
+  	<script src="{{ cfg.base_url }}javascript/facebox/facebox.js" type="text/javascript"></script>
+  	<link rel="stylesheet" href="{{ cfg.base_url }}javascript/facebox/facebox.css" media="screen" rel="stylesheet" /></script>
+  	<link rel="stylesheet" href="{{ cfg.base_url }}javascript/treeview/jquery.treeview.css" type="text/css" />
+ 
+  	<script type="text/javascript" src="{{ cfg.base_url }}javascript/treeview/jquery.treeview.js"></script>
+  	
+  	
+  <style type="text/css">
+  	#content-lst-tco { height:400px; overflow:auto; }
+  </style>
+  <script type="text/javascript">
+	 var showTco = function() {
+		 jQuery.facebox(function() {
+			  jQuery.get('{{ cfg.base_url }}tco/ajax/lst_tco', function(data) {
+			    jQuery.facebox('<div id="content-lst-tco"><h2> Veuillez cliquer sur un element de cout.</h2><br>' + data + '</div>')
+			  })
+			}) 
+	}
+	
+	
+	 var showTcoParametre = function(tcoId) {
+		 jQuery.facebox(function() {
+			  jQuery.get('{{ cfg.base_url }}profil_scenario/{{ cfg.profil_id }}/scenario/{{ cfg.scenario_id }}/mesures/lst_tco_parametres/' + tcoId, function(data) {
+			    jQuery.facebox('<div id="content-lst-tco"><h2>Veuillez cliquer sur un parametre</h2><br>' + data + '</div>')
+			  })
+			}) 
+			
+	 }		
+			
+	$(document).ready(function(){
+			  tabs = $('#container-1').tabs();
+		
+			  $('#btnSelectParameter').click( 
+						function()
+						{
+							showTco();
+							return false;
+						}
+					   );
+			  
+	});
+		
+	
+	var tcoSelected = function(tcoId) { 
+		$('#facebox').fadeOut( 'slow',function()
+				{
+					document.getElementById('id_parent_tco_id').value = tcoId
+				}
+			)
+		}
+
+
+	var ajaxFillFormYearsValues = function(parametreId) {
+		$.ajax({
+		      url: "{{ cfg.base_url }}profil_scenario/{{ cfg.profil_id }}/scenario/{{ cfg.scenario_id }}/mesures/get_parametre_infos/" + parametreId,
+		      global: false,
+		      type: "GET",
+		      data: '',
+		      //dataType: "json",
+		      async:false,
+		      success: function(msg){
+				eval(msg);
+				
+				var i = 0;
+				for(i = 1; i < 21;i++) {
+					document.getElementById('id_annee'+i).value = eval( "parametre.year"+i );
+				}
+		      }
+		   }
+		)
+	}
+	
+	var tcoParametreSelected = function(parametreId) {
+		$('#facebox').fadeOut( 'slow',function() 
+				{
+			 		ajaxFillFormYearsValues(parametreId);
+				}
+		);
+	}
+  
+  </script>
+{% endblock  %}
+{% block progression %} 
+<a href="{{ cfg.base_url }}tco/">{% trans "tco" %}</a> /
+{% trans "menu tco move under" %} {% endblock %}
+
+{% block title %} 
+{% trans "menu tco move under" %} {% endblock %}
+
+{% block menu_left %}
+			<h3>{% trans "tco" %}</h3>
+			<ul class="nav">
+				<li><a href="{{ cfg.base_url }}tco/add" class="add">{% trans "menu tco add" %}</a></li>
+				<li><a href="{{ cfg.base_url }}tco/" class="list">{% trans "menu tco lst" %}</a></li>
+			</ul>
+{% endblock %}

@@ -1,0 +1,49 @@
+/* 
+    Document   : SM
+    Created on : 30-mar-2009, 9:10:30
+    Author     : israel de la hoz
+    Description: hoja de estilos predeterminados para softmachine
+        
+*/
+
+
+/* Override standard grid styles (add colour to vertical grid lines) */
+.x-grid3-col {
+    border-left:  1px solid #EEEEEE;
+    border-right: 1px solid #D2D2D2;
+}
+
+/* Also remove padding from table data (to compensate for added grid lines) */
+.x-grid3-row td, .x-grid3-summary-row td {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+
+
+.redrow{ background-color: #FFEDEC !important;  }
+.bluerow{background-color: #E8F5FD !important;}
+.greenrow{ background-color: #F4FEF1 !important; }
+.yellowrow{background-color: #FEFFE8 !important;}
+.purplerow{background-color: #FCF3FE !important;}
+.orangerow{background-color: #FDF8EE !important;}
+
+/*.x-form-field-wrap.edicion-trigger{background-image:url(../images/up.jpg);cursor:pointer;}*/
+
+.x-form-field-wrap .x-form-browse-trigger {
+  background: transparent url(../images/edicion.png) no-repeat 0 0;
+  cursor: pointer;
+  right: 0px;
+}
+
+.ext-strict .ext-safari .x-small-editor .x-form-text {
+    height: 18px !important;
+}
+.x-form-field-wrap .x-form-trigger{
+    position:static;
+    top:auto;
+    vertical-align:top;
+}
+
+.DocAuto-icon { background: url(../images/layout.png) 0 6px no-repeat !important;}
+.PCL-icon { background: url(../images/grilla.png) 0 6px no-repeat !important;}

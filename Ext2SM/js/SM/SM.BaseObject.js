@@ -1,0 +1,38 @@
+
+SM.BaseObject=Ext.extend(Ext.util.Observable,{
+    init:function(object){
+        if(object.renderType!='window'){
+            if(!object.SMRender){
+                Ext.apply(object,{
+                    height:View.getBox().height-115,
+                    SMRender:function(){
+                        PclActiva=this;
+                        tabs.add(this).show();
+                        pest++;
+                        buscar.hide();
+                        vimpresion.hide();
+                        nav.activate('links');
+                        this.on('activate',function(){
+                            buscar.hide();
+                            vimpresion.hide();
+                        });
+                        this.on('deactivate',function(){
+                            nav.activate('tree');
+                        });
+                        this.on('beforedestroy',function(){
+                            nav.activate('tree');
+                        });
+                    }
+                })
+            }
+        }else{
+            if(objec.SMRender){
+                Ext.apply(object,{
+                    SMRender:function(){
+                        this.show();
+                    }
+                });
+            }
+        }
+    }
+});

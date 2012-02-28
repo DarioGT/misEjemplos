@@ -1,0 +1,39 @@
+{% extends "pages/base.html" %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr'} 
+
+
+{% block title_section %} Profil et sc&eacute;nario {% endblock %}
+{% block title %}  {% endblock %}
+
+{% block menu_left %}
+            <h3>{% trans "menu admin user title" %}</h3>
+            <ul class="nav">
+                {% if cfg.page == "admin users add" %}
+                <li><span class="active">{% trans "menu admin user add" %}</span></li>
+                {% else %}
+                <li><a href="{{ cfg.base_url }}administration/user/add">{% trans "menu admin user add" %}</a></li>
+                {% endif %}
+                {% if cfg.page == "admin list users" %}
+                <li><span class="active">{% trans "menu admin user list" %}</span></li>
+                {% else %}
+                <li><a href="{{ cfg.base_url }}administration/user">{% trans "menu admin user list" %}</a></li>
+                {% endif %}
+            </ul>
+            <br>
+            <h3>{% trans "page admin menu expert" %}</h3>
+            <ul class="nav">
+                {% if cfg.page == "admin users expert add" %}
+                <li><span class="active">{% trans "page admin menu expert add" %}</span></li>
+                {% else %}
+                <li><a href="{{ cfg.base_url }}administration/user_expert/add">{% trans "page admin menu expert add" %}</a></li>
+                {% endif %}
+                {% if cfg.page == "admin users expert list" %}
+                <li><span class="active">{% trans "page admin menu expert list" %}</span>
+                {% else %}
+                <li><a href="{{ cfg.base_url }}administration/user_expert">{% trans "page admin menu expert list" %}</a>
+                {% endif %}
+            </ul>
+{% endblock %}

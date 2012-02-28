@@ -1,0 +1,71 @@
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr' %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>{% trans "site title" %} {% block title_section %} {% endblock %}</title>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<style media="all" type="text/css">@import "{{ cfg.base_url }}stylesheets/all.css";</style>
+</head>
+<body><div id="main">
+
+	<div id="header">
+		<a href="{{ cfg.base_url }}" class="logo">{{ cfg.site }}</a>
+		{% block menu %} {% endblock %}
+		{% if user.is_authenticated %}
+		<div id="top-users-navigation"> 
+			{% trans "welcome" %} <a href="#"><b>{{ user }}</b></a> | <a href="{{ cfg.base_url }}logout">{% trans "logout" %}</a>
+		</div>
+		{% endif %}
+	</div>
+	<div id="middle">
+		<div id="left-column">
+			{% block menu_left %}{% endblock %}
+		</div>
+		<div id="center-column" class="section">
+			<div class="top-bar"style="margin-bottom:20px;">
+			{% if user.is_authenticated %}
+				<div id="progression">
+					<table border="0">
+						<tr>
+							<td width=170>
+								<b>Chemin de progression:</b>
+							</td>
+							<td>
+								{% block progression %}{% endblock %}
+							</td>
+						</tr>
+					</table>
+				</div>
+				{% endif %}
+				<h1>{% block  title %}{% endblock %}</h1>
+				<div class="breadcrumbs">
+				</div>
+			</div>
+			<div class="section">
+			{% block content %} {% endblock %}
+			</div>
+		</div>
+		<div id="right-column">
+			<!-- 
+			<strong class="h">Utilisateurs connect&eacute;s</strong>
+			<div class="box">
+			<ul>
+				<li><a href=""></a></li>
+			</ul>
+	  		</div>
+	  		-->
+	  </div>
+	</div>
+	<div id="footer">
+		<div style="text-align:center;padding-top:10px;">
+			{% trans "copyright" %}
+		</div>
+	</div>
+</div>
+</body>
+{% block javascript %}{% endblock %}
+</html>

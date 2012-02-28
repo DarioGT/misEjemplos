@@ -1,0 +1,58 @@
+import os
+
+BASE_DIR = os.path.realpath(os.path.dirname(__file__))
+
+DEBUG = True
+LOGGING_DEBUG = 'debug'
+
+ADMINS = (
+     ('Julien Bouquillon', 'julien@bouquillon.com'),
+)
+
+EMAIL_HOST = 'smtp.neuf.fr'
+
+DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = 'django-skeleton'             # Or path to database file if using sqlite3.
+DATABASE_USER = 'dev'             # Not used with sqlite3.
+DATABASE_PASSWORD = ''         # Not used with sqlite3.
+DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
+DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+
+
+DJANGO_SOURCE = os.path.join(BASE_DIR, '..', '..', 'svn', 'django110')       # specific django version for this project
+
+DATA_PATH = os.path.join(BASE_DIR, 'data')                      # a central place where to store apps datas
+
+HOST = 'http://www.djangoproject.com'                           # your real host
+
+
+
+FORCE_LOGIN = True  # first page is always login
+LOGIN_URL = '/apps/login'
+
+DEFAULT_VIEW = 'core.views.default'
+
+
+# ############ #
+# DJANGO STUFF #
+# ############ #
+
+SECRET_KEY = "mljhgfkgxcbvn:nkl,mùkojihugfjgcbn,b"
+
+
+MIDDLEWARE_CLASSES = (      
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    #'django.middleware.doc.XViewMiddleware',
+    'core.middleware.AJAXSimpleExceptionResponse.AJAXSimpleExceptionResponse'
+)
+
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',  
+    'core.django_concurrent_test_server',    # only for DEV !
+    'apps.login',
+    'apps.main',
+)

@@ -1,0 +1,66 @@
+/*
+ * Codigo libre para usarse en proyectos comerciales y no comerciales.
+ * Por jorge aldana
+ * http://www.frogx3.com
+ *****************************************************************************/
+
+html, body{
+  height: 100%;
+}
+
+*, html, body, form {
+	outline:none;  
+	margin: 0;
+	padding: 0;
+	font-size:11px;
+	font-family:Arial, Verdana, Tahoma, Serif;
+}
+
+img{border:0;}
+
+
+/*********** Empieza CSS para Tabla con nombre de clase "lista" *************/
+/*********** Start CSS Code for the table with class name "list" ************/
+
+.lista{
+	width:100%;
+	border:3px double #f2f2f2;
+	margin:15px 2px;
+}
+
+.lista tr{
+	height:20px;
+}
+
+.lista tr.estatico{
+	background:#f2f2f2;
+}
+
+.lista th,
+.lista td,
+.lista td a{
+	padding:2px;
+	font-size:13px;	
+	vertical-align:top;
+}
+
+.lista td a{
+	color:#FFCC00;	
+}
+
+.lista td a:hover{
+	text-decoration:none;
+}
+
+.lista th{
+	background:url(./images/text-bg.gif) #ffffff repeat-x;
+	border-bottom:3px double #f2f2f2;
+	line-height:20px;
+	border-right:3px double #f2f2f2;
+}
+
+.lista td{
+	border-right:1px solid #f2f2f2;	
+	border-bottom:1px solid #f2f2f2;
+	line-height:20px;	
+}

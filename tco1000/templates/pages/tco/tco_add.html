@@ -1,0 +1,86 @@
+{% extends "pages/tco/base.html" %}
+{% load buildtcotree %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr' %}
+
+{% block content %}
+
+	{% if success == 0 %}
+		<div class="form">
+			<form name="tco" method="post" action="">{% csrf_token %}
+				{% transformtohiddenfield form.niveau %}
+				{% transformtohiddenfield form.parent_tco_id %}
+				{% if form.errors %}
+					<style type="text/css">
+						{% if form.titre.errors %}#id_titre { border:1px solid red;  }{% endif  %}
+						{% if form.description.errors %}#id_description { border:1px solid red;  }{% endif  %}
+						{% if form.documentation.errors %}#id_documentation { border:1px solid red;  }{% endif  %}
+					</style>
+				{% endif %}
+				<table border="0" cellspacing="0" cellpadding="0" class="form">
+					<tr>
+						<td width="100" align="right" valign="top"><label for="">Nom</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.titre }}</td>
+						<td align="left">{{ form.titre.errors }}</td>
+					</tr>				
+					<tr>
+						<td width="100" align="right" valign="top">{{ form.description.label_tag }}</td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.description }}</td>
+						<td align="left">{{ form.description.errors }}</td>
+					</tr>				
+					<tr>
+						<td width="100" align="right" valign="top">{{ form.documentation.label_tag }}</td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.documentation }}</td>
+						<td align="left">{{ form.documentation.errors }}</td>
+					</tr>
+					<tr>
+						<td align="center" colspan="4">
+							<br>
+							<table align="center" class="normal">
+								<tr>
+									<td>
+										<input type="submit" value="{% trans "add" %}" />
+									</td>
+									<td>
+										<input type="submit" name="action" value="{% trans "cancel" %}" />
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	{% else %}
+		<span class="success">TCO ajout&eacute; avec succ&egrave;s</span>
+		<br>
+		<br>
+		<br>
+		<form name="tco_lst" method="get" action="{{ cfg.base_url }}tco">
+			<input type="submit" value="Retour &agrave; la liste des TCO">
+		</form>
+	{% endif %}
+{% endblock %}
+
+{% block progression %} 
+<a href="{{ cfg.base_url }}tco/">{% trans "tco" %}</a> /
+{% trans "menu tco add" %} 
+{% endblock %}
+
+{% block title %} 
+{% trans "menu tco add" %} 
+{% endblock %}
+
+
+{% block menu_left %}
+			<h3>{% trans "tco" %}</h3>
+			<ul class="nav">
+				<li><span class="active" class="add">{% trans "menu tco add" %}</span></li>
+				<li><a href="{{ cfg.base_url }}tco/">{% trans "menu tco lst" %}</a></li>
+			</ul>
+{% endblock %}

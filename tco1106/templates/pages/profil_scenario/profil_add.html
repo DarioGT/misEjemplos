@@ -1,0 +1,87 @@
+{% extends "pages/profil_scenario/base.html" %}
+{% load buildtcotree %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr' %}
+
+{% block content %}
+
+	{% if success == 0 %}
+		<div class="form">
+			<form name="tco" method="post" action="">{% csrf_token %}
+				{% if form.errors %}
+					<style type="text/css">
+						{% if form.nom.errors %}#id_titre { border:1px solid red;  }{% endif  %}
+						{% if form.description.errors %}#id_description { border:1px solid red;  }{% endif  %}
+						{% if form.documentation.errors %}#id_documentation { border:1px solid red;  }{% endif  %}
+					</style>
+				{% endif %}
+				<table border="0" cellspacing="0" cellpadding="0" class="form">
+					<tr>
+						<td width="150" align="right" valign="top"><label for="id_nomProfil">{% trans "form label name" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.nomProfil }}</td>
+						<td align="left">{{ form.nomProfil.errors }}</td>
+					</tr>				
+					<tr>
+						<td width="150" align="right" valign="top"><label for="id_nombreOccurence">{% trans "form label occurence" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.nombreOccurence }}</td>
+						<td align="left">{{ form.nombreOccurence.errors }}</td>
+					</tr>		
+					<tr>
+						<td width="150" align="right" valign="top"><label for="id_description">{% trans "form label description" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.description }}</td>
+						<td align="left">{{ form.description.errors }}</td>
+					</tr>			
+					<tr>
+						<td width="150" align="right" valign="top"><label for="id_documentation">{% trans "form label documentation" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.documentation }}</td>
+						<td align="left">{{ form.documentation.errors }}</td>
+					</tr>
+					<tr>
+						<td align="center" colspan="4">
+							<br>
+							<table align="center" class="normal">
+								<tr>
+									<td>
+										<input type="submit" value="{% trans "add" %}" />
+									</td>
+									<td>
+										<input type="submit" name="action" value="{% trans "cancel" %}" />
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	{% else %}
+		<span class="success">{% trans "form profil add success" %}</span>
+		<br>
+		<br>
+		<br>
+		<form name="tco_lst" method="get" action="{{ cfg.base_url }}profil_scenario/">
+			<input type="submit" value="{% trans "form profil back lst" %}" />
+		</form>
+	{% endif %}
+{% endblock %}
+
+{% block title %} 
+{% trans "menu profil add" %}{% endblock %}
+
+{% block progression %} 
+<a href="{{ cfg.base_url }}profil_scenario/">{% trans "title profil_scenario" %}</a> /
+{% trans "menu profil add" %}{% endblock %}
+
+{% block menu_left %}
+			<h3>{% trans "profil" %}</h3>
+			<ul class="nav">
+				<li><span class="active" class="add">{% trans "menu profil add" %}</span></li>
+				<li><a href="{{ cfg.base_url }}profil_scenario/">{% trans "menu profil lst" %}</a></li>
+			</ul>
+{% endblock %}

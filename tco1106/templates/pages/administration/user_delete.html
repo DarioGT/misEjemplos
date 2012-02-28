@@ -1,0 +1,44 @@
+{% extends "pages/administration/base.html" %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr'} 
+
+{% block title_section %} Profil et sc&eacute;nario {% endblock %}
+{% block title %}
+	{% trans "menu admin user delete" %}
+ {% endblock %}
+{% block progression %}
+	<a href="{{ cfg.base_url }}administration"> {% trans "admin" %} </a> /
+	<a href="{{ cfg.base_url }}administration/user"> {% trans "menu admin user title" %} </a> /
+	{% trans "menu admin user add" %}
+ {% endblock %}
+
+{% block content %}
+	{% if request.method == 'GET' %}
+		<div class="form">
+			<form name="delete" method="post" action="">{% csrf_token %}
+				<input type="hidden" name="action" value="delete" />
+				<span class="warning">
+				{% trans "page user delete" %}
+				</span>
+				<br>
+				<br>
+				<input type="hidden" name="action" value="delete" />
+				<input type="hidden" name="user_id" value="{{ user_id }}" />
+				
+				
+				<input type="submit" value="Supprimer">
+				<input type="submit" name="action" value="Annuler">
+			</form>
+		</div>
+	{% else %}
+		<span class="success">{% trans "form user delete success" %}</span>
+		<br>
+		<br>
+		<br>
+		<form name="tco_lst" method="get" action="{{ cfg.base_url }}administration/user">
+			<input type="submit" value="{% trans "form user back lst" %}" />
+		</form>
+	{% endif %}
+{% endblock %}

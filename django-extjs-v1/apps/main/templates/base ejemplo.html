@@ -1,0 +1,63 @@
+    {% extends "base.html" %}
+    {% block title %}Django ExtJs samples{% endblock %}
+    {% block extrahead %}
+
+        <!-- includes from apps -->
+        {% for css in APPS_CSS_INCLUDES %}
+            <link rel="stylesheet" type="text/css" href="{{ css }}" />
+        {% endfor %}
+
+    {% endblock %}
+    
+    {% block content %}
+
+        <!-- LOADING MASK -->
+        
+        <div id="loading-mask"></div>
+        <div id="loading">
+          <div class="loading-indicator">
+
+<!--
+	        <div>
+              <img src="http://extjs.cachefly.net/ext-3.4.0/resources/images/default/shared/large-loading.gif" width="32" height="32" style="margin-right:8px;" align="absmiddle"/>Loading ...
+            </div> 
+-->
+          </div>
+        </div>
+ 
+ 
+<script language="javascript">
+
+Ext.onReady(function() {
+
+         createPanel('custom grid from model');
+  }
+ )
+
+        
+</script>
+
+    <script language="javascript">
+        Ext.BLANK_IMAGE_URL = "http://extjs.cachefly.net/ext-3.4.0/resources/images/default/s.gif";
+    </script>
+    <style>
+    </style>
+    
+    <!-- includes from apps -->
+    {% for js in APPS_JS_INCLUDES %}
+        <script type="text/javascript" src="{{ js }}"></script>
+    {% endfor %}
+    
+    <div id='genericGrid'></div>
+    <div id='examples' style='margin:0 50 0 50'></div>
+    <div id='genericPanel'></div>
+ 
+    
+<body>
+	<form>
+		<input type="button" value="Windows Grid!" onclick="newDjangoGrid('xxx', 'user')" />
+		<input type="button" value="Panel Grid!" onclick="newDjangoSimplePanel('panel', 'user', 'genericPanel')" />
+	</form>
+</body>
+    
+    {% endblock %}

@@ -1,0 +1,32 @@
+2011-08-31 15:32  django-extjs  0.2
+
+    * Move statics to extjs/static dir for Django 1.3 collectstatic
+
+    Thanks to Chris Rose:
+
+    * Add file upload support
+    * Reset the form when submit was successful
+    * Display checkbox labels to the right of the checkbox
+    * Disable the buttons when the form is being loaded or saved
+    * Display django fields help_text on the form
+    * Add a maxFieldWidth option to down size any fields that would be too big (eg: max_length=255)
+    * Display a    * after fields which are required
+    * Use "submit" instead of "save" if we are not a modelform
+    * Add fieldset support
+    * use Ext's LoadMask
+    * capitalise the field name and replace _ with spaces if no explicit field name is defined
+    * add IPAddressField support
+    * fail nicely if the field type is not defined
+    * Remove console.log calls for IE compatibility
+    * Make the button text configurable in django
+    * English error messages
+    * Render the form after its loaded
+    * Use a relative import to avoid conflicts with other extjs libraries
+    * Add support for django 1.1
+    * Make context an optional argument for JsonSuccess
+    * Add `extjs.utils.JsonSuccess` helper for a json successful response shortcut
+    * Add `extjs.utils.JsonSerialize` helper function, for using JsonResponse manually, instead of JsonSuccess or JsonError
+
+    TODO :
+
+    * Fix 'extjs.utils.extjs_login_required' decorator on django 1.1

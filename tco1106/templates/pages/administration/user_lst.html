@@ -1,0 +1,71 @@
+{% extends "pages/administration/base.html" %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr'} 
+
+
+{% block title_section %} Profil et sc&eacute;nario {% endblock %}
+{% block title %} 
+	{% trans "menu admin user list" %}
+{% endblock %}
+
+{% block progression %} 
+	<a href="{{ cfg.base_url }}administration"> {% trans "admin" %} </a> /
+	<a href="{{ cfg.base_url }}administration/user"> {% trans "menu admin user title" %} </a> /
+	{% trans "menu admin user list" %}
+{% endblock %}
+
+{% block content %}
+			<div class="table">
+				<img src="{{ cfg.base_url }}stylesheets/images/bg-th-left.gif" width="8" height="7" alt="" class="left" />
+				<img src="{{ cfg.base_url }}stylesheets/images/bg-th-right.gif" width="7" height="7" alt="" class="right" />
+				<table class="listing" cellpadding="0" cellspacing="0">
+					<tr>
+						<th class="first" width="30">Num&eacute;ro</th>
+						<th>{% trans "tab user username" %}</th>
+						<th>{% trans "tab user superuser" %}</th>
+						<th>{% trans "edit" %}</th>
+						<th class="last">{% trans "delete" %}</th>
+					</tr>
+					{% for u in lst_users %}
+					<tr>
+						<td class="first style2">
+						{{ u.id }}
+						</td>
+						<td>
+							<a href="{{ cfg.base_url }}administration/user/{{ u.id }}/edit">
+								{{  u.username }}
+							</a>
+						</td>
+						<td>
+							{% if u.is_superuser %}
+								<img src="{{ cfg.base_url }}images/success.gif" width="16" height="16" />
+							{% else %}
+								<img src="{{ cfg.base_url }}images/delete.gif" width="16" height="16" />
+							{% endif %}
+						</td>
+						<td>
+							<a href="{{ cfg.base_url }}administration/user/{{ u.id }}/edit">
+								<img src="{{ cfg.base_url }}stylesheets/images/edit-icon.gif" width="16" height="16" title="{% trans "edit" %}" alt="{% trans "edit" %}" />
+							</a>
+						</td>
+						<td lass="last">
+							<a href="{{ cfg.base_url }}administration/user/{{ u.id }}/delete">
+								<img src="{{ cfg.base_url }}stylesheets/images/delete.gif" width="16" height="16" title="{% trans "delete" %}" alt="{% trans "delete" %}" />
+							</a>
+						</td>
+					</tr>
+					{% endfor %}
+					{% if not lst_users %}
+					<tr>
+						<td class="first style2" colspan="6" align="center">
+							<span style="text-align:center;display:block;">
+							Aucun utilisateur.
+							</span>
+						</td>
+					</tr>
+					{% endif %}
+				</table>
+			</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "pages/base.html" %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr'} 
+
+
+{% block title_section %} TCO et param&egrave;tres  {% endblock %}
+{% block title %} Liste des TCO  {% endblock %}
+
+{% block menu_left %}
+			<h3>Menu</h3>
+			<ul class="nav">
+				<li><a href="{{ cfg.base_url }}tco/add">Ajouter un TCO</a></li>
+			</ul>
+{% endblock %}

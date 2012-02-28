@@ -1,0 +1,225 @@
+{% extends "pages/tco/base.html" %}
+
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr' %}
+
+{% block content %}
+	{% if success == 0 %}
+		<div class="form">
+				<form name="tco" method="post" action="">{% csrf_token %}
+				{% if form.errors %}
+					<style type="text/css">
+						{% if form.nomHypothese.errors %}#id_nomHypothese { border:1px solid red;  }{% endif  %}
+						{% if form.numHypothese.errors %}#id_numHypothese { border:1px solid red;  }{% endif  %}
+						{% if form.description.errors %}#id_description { border:1px solid red;  }{% endif  %}
+					</style>
+				{% endif %}
+				<table border="0" cellspacing="0" cellpadding="0" class="form">
+					<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "hypothese name" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.nomHypothese }}</td>
+						<td align="left">{{ form.nomHypothese.errors }}</td>
+					</tr>				
+					<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "hypothese no" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.numHypothese }}</td>
+						<td align="left">{{ form.numHypothese.errors }}</td>
+					</tr>	
+					<tr>
+						<td width="140" align="right" valign="top">{{ form.description.label_tag }}</td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.description }}</td>
+						<td align="left">{{ form.description.errors }}</td>
+					</tr>		
+					<tr>
+						<td width="150" align="right" valign="top"><label for="id_libre_proprietaire">{% trans "type" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">
+							<select value="1" name="parametreType">
+							<option value="" {% if parametreType == ''  %}selected="selected"{% endif%}></option>
+							<option value="L" {% if parametreType == 'L'  %}selected="selected"{% endif%}>Libre</option>
+							<option value="P" {% if parametreType == 'P'  %}selected="selected"{% endif%}>Propri&eacute;taire</option>
+							<option value="M" {% if parametreType == 'M'  %}selected="selected"{% endif%}>Mixte</option>
+							</select>
+						</td>
+						<td align="left"></td>
+					</tr>
+					<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee1" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee1 }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee2" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee2 }}</td>
+						<td align="left">{{ form.annee2.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee3" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee3 }}</td>
+						<td align="left">{{ form.annee3.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee4" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee4 }}</td>
+						<td align="left">{{ form.annee4.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee5" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee5 }}</td>
+						<td align="left">{{ form.annee5.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee6" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee6 }}</td>
+						<td align="left">{{ form.annee6.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee7" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee7 }}</td>
+						<td align="left">{{ form.annee7.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee8" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee8 }}</td>
+						<td align="left">{{ form.annee8.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee9" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee9 }}</td>
+						<td align="left">{{ form.annee9.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee10" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee10 }}</td>
+						<td align="left">{{ form.annee10.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee11" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee11 }}</td>
+						<td align="left">{{ form.annee11.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee12" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee12 }}</td>
+						<td align="left">{{ form.annee12.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee13" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee13 }}</td>
+						<td align="left">{{ form.annee13.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee14" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee14 }}</td>
+						<td align="left">{{ form.annee14.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee15" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee15 }}</td>
+						<td align="left">{{ form.annee15.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee16" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee16 }}</td>
+						<td align="left">{{ form.annee16.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee17" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee17 }}</td>
+						<td align="left">{{ form.annee17.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee18" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee18 }}</td>
+						<td align="left">{{ form.annee18.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee19" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee19 }}</td>
+						<td align="left">{{ form.annee19.errors }}</td>
+					</tr>
+										<tr>
+						<td width="140" align="right" valign="top"><label>{% trans "annee20" %}</label></td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.annee20 }}</td>
+						<td align="left">{{ form.annee20.errors }}</td>
+					</tr>
+					<tr>
+						<td width="100" align="right" valign="top">{{ form.documentation.label_tag }}</td>
+						<td width="10" align="center" valign="top">:</td>
+						<td align="left">{{ form.documentation }}</td>
+						<td align="left">{{ form.documentation.errors }}</td>
+					</tr>
+					<tr>
+						<td align="center" colspan="4">
+							<br>
+							<table align="center" class="normal">
+								<tr>
+									<td>
+										<input type="submit" value="{% trans "add" %}" />
+									</td>
+									<td>
+										<input type="submit" name="action" value="{% trans "cancel" %}" />
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	{% else %}
+		<span class="success">{% trans "form parametre add success" %}</span>
+		<br>
+		<br>
+		<br>
+			<form name="tco_lst" method="get" action="{{ cfg.base_url }}tco/{{ tco_id }}/parameters">
+				<input type="submit" value="{% trans "form parametre lst back" %}">
+			</form>
+	{% endif %}
+{% endblock %}
+
+{% block progression %} 
+<a href="{{ cfg.base_url }}tco/">{% trans "tco" %}</a> / <a href="{{ cfg.base_url }}tco/{{ tco_id }}/parameters">Param&egrave;tres</a> /
+{% trans "menu tco parametre add" %}
+{% endblock %}
+
+{% block title %} 
+{% trans "menu tco parametre add" %}
+{% endblock %}
+
+{% block menu_left %}
+			<h3>{% trans "tco" %}</h3>
+			<ul class="nav">
+				<li><a href="{{ cfg.base_url }}tco/add">{% trans "menu tco add" %}</a></li>
+				<li><a href="{{ cfg.base_url }}tco/">{% trans "menu tco lst" %}</a></li>
+			</ul>
+			<h3>{% trans "menu left parameter title lst" %}</h3>
+			<ul class="nav">
+				<li><span class="active" class="add">{% trans "menu tco parametre add" %}</span></li>
+				<li><a href="{{ cfg.base_url }}tco/{{ tco_id }}/parameters" class="list">{% trans "menu left parameter lst" %}</a></li>
+			</ul>
+{% endblock %}

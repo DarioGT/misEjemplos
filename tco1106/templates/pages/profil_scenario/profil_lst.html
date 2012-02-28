@@ -1,0 +1,116 @@
+{% extends "pages/profil_scenario/base.html" %}
+{% load buildprofiltree %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr' %}
+
+{% block progression %} <a href="{{ cfg.base_url }}profil_scenario/">{% trans "title profil_scenario" %}</a>   {% endblock %}
+
+
+{% block title %}{% trans "title profil_scenario" %}{% endblock %}
+
+{% block content %}
+	<!-- 
+	<div class="section">
+		<table border=0 width=100%>
+			<tr>
+				<td valign="top">
+					<p>
+						{% trans "page profil_scenario_lst intro" %}
+					</p>
+				</td>
+				<td valign="top" style="padding-left:10px;">
+				
+                <table border="1" cellspacing="3" cellpadding="3" align="right" width=180>
+                	<tr>
+                		<td colspan="2"><h2 style="text-align:center;">{% trans "legend" %}</h2></td>
+                	</tr>
+                    <tr>
+                        <td width="20" align="center">
+							<img src="{{ cfg.base_url }}images/legende1.jpg" width=16 height=16 border=0 />
+                        </td>
+                        <td>
+							{%trans "profil" %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="20" align="center">
+							<img src="{{ cfg.base_url }}images/legende2.jpg" width=16 height=16 border=0 />
+                        </td>
+                        <td>
+							{%trans "scenario" %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="20" align="center">
+		                    <img width="16" height="16"  src="{{ cfg.base_url }}images/add.gif"/>
+                        </td>
+                        <td>
+							{% trans "legend add scenario" %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="20" align="center">
+                        	<img width="16" height="16" border="0"  src="{{ cfg.base_url}}images/zoom.gif"/>
+                        </td>
+                        <td>
+							{% trans "legend see mesure" %}
+                        </td>
+                    </tr>
+                </table>
+               </td>
+            </tr>
+          </table>
+          <br>
+          <div class="hr"></div>
+          <br>
+          
+	</div>
+	-->
+	<div class="section">
+				<h2>{% trans "page profil_scenario_lst liste" %}</h2>
+                <table border="0" cellspacing="0" cellpadding="0" align="right">
+                    <tr>
+                        <td width="80" align="center">
+                        	<b>Type</b>
+                        </td>
+						<td width="90" align="center">
+							<b>Nombre d'occurences</b>
+                        </td>
+                        <td width="10">
+                            &nbsp;&nbsp;
+                        </td>
+                        <td width="90" align="center">
+							<b>Actions</b>
+                        </td>
+                    </tr>
+                </table>
+	</div>
+	<div class="section">
+		{% buildprofiltree lst_profil %}
+	</div>
+	
+{% endblock %}
+
+
+{% block menu_left %}
+			<h3>{% trans "profil" %}</h3>
+			<ul class="nav">
+				<li><a href="{{ cfg.base_url }}profil_scenario/add" class="add">{% trans "menu profil add" %}</a></li>
+				<li><span class="active" class="add">{% trans "menu profil lst" %}</span></li>
+			</ul>
+{% endblock %}
+{% block javascript  %}
+  <script src="{{ cfg.base_url }}javascript/treeview/lib/jquery.js"></script>
+  <link rel="stylesheet" href="{{ cfg.base_url }}javascript/treeview/jquery.treeview.css" type="text/css" />
+  <script type="text/javascript" src="{{ cfg.base_url }}javascript/treeview/jquery.treeview.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#example").treeview();
+  });
+  </script>
+
+
+{% endblock  %}
+

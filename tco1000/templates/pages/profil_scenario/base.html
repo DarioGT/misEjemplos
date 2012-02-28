@@ -1,0 +1,16 @@
+{% extends "pages/base.html" %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr'} 
+
+
+{% block title_section %}  / {% trans "menu scenario"  %} {% endblock %}
+{% block title %}  {% endblock %}
+
+{% block menu_left %}
+			<h3>Menu</h3>
+			<ul class="nav">
+				<li><a href="{{ cfg.base_url }}profil_scenario/add">Ajouter un Profil</a></li>
+			</ul>
+{% endblock %}

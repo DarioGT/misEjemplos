@@ -1,0 +1,16 @@
+{% extends "pages/base.html" %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr'} 
+
+
+{% block title_section %} Profil et sc&eacute;nario {% endblock %}
+{% block title %}  {% endblock %}
+
+{% block menu_left %}
+			<h3>Menu</h3>
+			<ul class="nav">
+				<li><a href="{{ cfg.base_url }}profil/changepassword">Modifier mon mot de passe</a></li>
+			</ul>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "pages/profil_scenario/base.html" %}
+{% load i18n %}
+{% load language %}
+
+{% activateLng 'fr' %}
+
+
+{% block content %}
+	{% if request.method == 'GET' %}
+		<div class="form">
+			<form name="delete" method="post" action="">{% csrf_token %}
+				<input type="hidden" name="action" value="delete" />
+				<span class="warning">
+				{% trans "page profil delete" %}
+				</span>
+				<br>
+				<br>
+				<input type="hidden" name="action" value="delete" />
+				<input type="hidden" name="tco_id" value="{{ tco_id }}" />
+				
+				
+				<input type="submit" value="Supprimer">
+				<input type="submit" name="action" value="Annuler">
+			</form>
+		</div>
+	{% else %}
+		<span class="success">{% trans "form profil delete success" %}</span>
+		<br>
+		<br>
+		<br>
+		<form name="tco_lst" method="get" action="{{ cfg.base_url }}profil_scenario/">
+			<input type="submit" value="{% trans "form profil back lst" %}" />
+		</form>
+	{% endif %}
+{% endblock %}
+
+{% block title %} 
+{% trans "menu profil delete" %}{% endblock %}
+
+{% block progression %} 
+<a href="{{ cfg.base_url }}profil_scenario/">{% trans "title profil_scenario" %}</a> /
+{% trans "menu profil delete" %}{% endblock %}
+
+{% block menu_left %}
+			<h3>{% trans "profil" %}</h3>
+			<ul class="nav">
+				<li><a href="{{ cfg.base_url }}profil_scenario/add" class="add">{% trans "menu profil add" %}</a>
+				<li><a href="{{ cfg.base_url }}profil_scenario/">{% trans "menu profil lst" %}</a></li>
+			</ul>
+{% endblock %}

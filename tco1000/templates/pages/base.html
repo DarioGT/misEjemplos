@@ -1,0 +1,55 @@
+{% extends "frame.html" %}
+
+{% load i18n %}
+{% load language %}
+{% load permissions %}
+
+{% activateLng 'fr' %}
+
+{% block menu %}
+		<ul id="top-navigation">
+			{% if cfg.section == 'accueil' %}
+			<li class="active"><span><span>{% trans "menu home" %}</span></span></li>
+			{% else %}
+			<li><span><span><a href="{{ cfg.base_url }}">{% trans "menu home" %}</a></span></span>
+			{% endif  %}
+			{% if cfg.section == 'profil' %}
+			<li class="active"><span><span>{% trans "menu profil" %}</span></span></li>
+			{% else %}
+			<li><span><span><a href="{{ cfg.base_url }}profil/">{% trans "menu profil" %}</a></span></span></li>
+			{% endif %}
+			{% if user.is_superuser  %}
+			{% if cfg.section == 'administration'%}
+			<li class="active"><span><span>{% trans "menu admin" %}</span></span></li>
+			{% else %}
+			<li><span><span><a href="{{ cfg.base_url }}administration">{% trans "menu admin" %}</a></span></span></li>
+			{% endif %}
+			{% endif %}
+			{% if cfg.right.tco_right_read == 1  %}
+			{% if cfg.section == 'tco' %}
+			<li class="active"><span><span>{% trans "menu tco" %}</span></span></li>
+			{% else %}
+			<li><span><span><a href="{{ cfg.base_url }}tco/">{% trans "menu tco" %}</a></span></span></li>
+			{% endif %}
+			{% endif %}
+			{% if cfg.right.profil_right_read == 1  %}
+			{% if cfg.section == 'scenario_profil' %}
+			<li class="active"><span><span>{% trans "menu scenario" %}</span></span></li>
+			{% else %}
+			<li><span><span><a href="{{ cfg.base_url }}profil_scenario/">{% trans "menu scenario" %}</a></span></span></li>
+			{% endif %}
+			{% endif %}
+			{% if cfg.right.rapport_right_read == 1  %}
+			{% if cfg.section == 'rapports' %}
+			<li class="active"><span><span>{% trans "menu rapports" %}</span></span></li>
+			{% else %}
+			<li><span><span><a href="{{ cfg.base_url }}rapports/">{% trans "menu rapports" %}</a></span></span></li>
+			{% endif %}
+			{% endif %}
+			{% if cfg.section == 'aide' %}
+			<li class="active"><span><span>{% trans "help" %}</span></span></li>
+			{% else %}
+			<li><span><span><a href="{{ cfg.base_url }}aide/">{% trans "help" %}</a></span></span></li>
+			{% endif %}
+		</ul>
+{% endblock %}
