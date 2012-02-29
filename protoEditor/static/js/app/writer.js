@@ -419,6 +419,8 @@ Ext.onReady(function(){
     Ext.tip.QuickTipManager.init();
     Ext.QuickTips.init();
 
+    setCsRfToken(); 
+    
     var store = Ext.create('Ext.data.Store', {
         model: 'Writer.Person',
         autoLoad: true,

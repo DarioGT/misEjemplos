@@ -23,8 +23,8 @@ import tools as utils
 
 def main(request):
 
-    if not request.user.is_authenticated():
-        return direct_to_template( request , 'login.html' )
+#    if not request.user.is_authenticated():
+#        return direct_to_template( request , 'login.html' )
 
     
     return direct_to_template( request , 'gridWriter.html' )

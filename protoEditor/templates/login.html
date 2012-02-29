@@ -15,14 +15,13 @@
     <div style="color:darkgrey;font-size:10px">
         CeRTAE <a style="color:darkgrey;font-size:10px"  href='http://www.certae.com/' target='_blank'>certae.com</a> ©2012
     </div>
-<!-- 	<script type="text/javascript" src="{{ STATIC_URL }}js/login/Ext.ux.Login.js"></script> -->
 	<script type="text/javascript" src="{{ STATIC_URL }}js/login/protoLogin.js"></script>
     
     <script type="text/javascript">
 
     Ext.onReady(function() {
         Ext.QuickTips.init();
-
+		setCsRfToken();
         var form = new ProtoUL.ux.Login({
            renderTo:'login'
            ,username:'{{ username }}'

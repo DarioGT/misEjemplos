@@ -10,11 +10,13 @@
 	
 	<script type="text/javascript" src="{{ STATIC_URL }}ext-all-debug.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/extOutils.js"></script>
+
 	
 	{% block extrahead %}{% endblock %}
 	
 	</head>
 	<body> 
+		{% csrf_token %}
 		{% block content %}
 		<div id="main"></div>
 	    {% endblock %}
