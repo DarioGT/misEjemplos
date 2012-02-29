@@ -1,5 +1,8 @@
 
-Ext.ux.Login = Ext.extend(Ext.form.FormPanel, {
+Ext.define('ProtoUL.ux.Login' ,{
+    extend: 'Ext.form.Panel',
+    alias : 'widget.protoLogin',
+
     iconCls:'icon-key', 
     width: 300,
     height: 135,
@@ -13,10 +16,11 @@ Ext.ux.Login = Ext.extend(Ext.form.FormPanel, {
     
     defaults: {
         xtype: "textfield",
-        anchor: "100%"
+        anchor: "100%",
+        enableKeyEvents : true  
     },
     
-    initComponent: function () {
+    initComponent: function() {
 
         this.submitButton = new Ext.Button({
             text: "v&eacute;rifier",
@@ -32,36 +36,31 @@ Ext.ux.Login = Ext.extend(Ext.form.FormPanel, {
             handler: this.resetPassword
         });
 
-
         this.buttons = [this.submitButton, this.resetButton];
 
+        
         Ext.apply(this, {
             items: [{
-                enableKeyEvents : true,  
                 fieldLabel: "utilisateur",
                 name: "login",
-                id: "login",
                 value: this.username,
+                listeners: {
+                    scope: this,
+		            keydown: this.onKeyEnter 
+                }
             }, {
-                enableKeyEvents : true,  
                 fieldLabel: "mot de passe",
                 inputType: "password",
                 name: "password",
-                id: "password",
-                value: '',
                 listeners: {
                     scope: this,
-		            keydown: function( me, e ) { 
-		                if (e.getKey() == e.ENTER ) {
-		                	this.submitLogin()
-		                   }
-		            	}
+		            keydown: this.onKeyEnter 
                 }
             }]
         });
 
-        Ext.ux.Login.superclass.initComponent.apply(this, arguments);
-
+        this.callParent(arguments);
+        
         this.on('afterlayout', function () {
             if (this.username == '') {
                 this.getForm().findField('login').focus();
@@ -70,7 +69,56 @@ Ext.ux.Login = Ext.extend(Ext.form.FormPanel, {
             }
         })
 
+    }, 
+ 
+    onKeyEnter: function( me, e ) { 
+        if (e.getKey() == e.ENTER ) {
+        	this.submitLogin()
+        	}
+		},
+
+    submitLogin: function (btn) {
+
+//        btn.disable();
+//        var next = window.location.search ? Ext.urlDecode(window.location.search.substring(1)).next : '';
+
+        var form = this.getForm(); 
+        if (form.isValid()){
+//            btn.setIconCls("icon-loading");
+        	form.submit({
+	            method:'POST', 
+//	            url:"/login?next=" + next,
+	            url:"contact/login/",
+	            scope: this,
+	
+	            success: this.submitLoginCallback,
+	            failure: this.submitLoginCallback
+	        });
+//        } else {
+//            this.submitButton.enable();
+        }
     },
+    
+    submitLoginCallback: function (form, action) {
+        var json = Ext.decode(action.response.responseText);
+        json.redirect = 'writer'
+        if (json.success === true) window.location = json.redirect;
+        else this.error(form, json);
+    },
+    
+    error: function (form, json) {
+        Ext.Msg.show({
+            buttons: Ext.Msg.OK,
+            animEl: 'elId',
+            title: 'erreur',
+            msg: 'Mauvais utilisateur ou mot de passe',
+            icon: Ext.MessageBox.ERROR
+
+        });
+        this.submitButton.enable();
+        this.submitButton.setIconCls("icon-ok");
+        this.getForm().findField('login').focus();
+    }, 
     
     resetPassword: function (btn) {
         Ext.Msg.prompt("votre email", "Saisissez votre email", function (btn, email) {
@@ -100,7 +148,6 @@ Ext.ux.Login = Ext.extend(Ext.form.FormPanel, {
                                 icon: Ext.MessageBox.WARNING
                             });
                         }
-
                     },
                     failure: function () {
                         Ext.Msg.show({
@@ -115,61 +162,10 @@ Ext.ux.Login = Ext.extend(Ext.form.FormPanel, {
             }
 
         }, this)
-
-    },
-    submitLogin: function (btn) {
-
-//        btn.disable();
-
-        //		Solo existe en la version de login independiente
-//        var next = window.location.search ? Ext.urlDecode(window.location.search.substring(1)).next : '';
-
-        var form = this.getForm(); 
-        if (form.isValid()){
-        	
-//            btn.setIconCls("icon-loading");
-        	form.submit({
-	            method:'POST', 
-//	            url:"/login?next=" + next,
-	            url:"contact/login/",
-	            scope: this,
-	
-	            success: this.submitLoginCallback,
-	            failure: this.submitLoginCallback
-	        });
-	        
-//        } else {
-//            this.submitButton.enable();
-        }
     }
-
-    ,
-    submitLoginCallback: function (form, action) {
-
-        var json = Ext.decode(action.response.responseText);
-        //alert(json);
-        //console.log(json);
-        
-        json.redirect = 'writer'
-        
-        if (json.success === true) window.location = json.redirect;
-        else this.error(form, json);
-    }
-
-    ,
-    error: function (form, json) {
-        //console.log(json);
-        Ext.Msg.show({
-            buttons: Ext.Msg.OK,
-            // fn: processResult,
-            animEl: 'elId',
-            title: 'erreur',
-            msg: 'Mauvais utilisateur ou mot de passe',
-            icon: Ext.MessageBox.ERROR
-
-        });
-        this.submitButton.enable();
-        this.submitButton.setIconCls("icon-ok");
-
-    }
+    
+    
 });
+
+
+
