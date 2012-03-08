@@ -2,7 +2,14 @@
 Este poryecto maneja ( writer ) todas las posibilidades de edicion y control de errores del lado servidor 
 y del lado cliente. 
 
-maneja csrf 
+manejar csrf  Ok
+manejar errore de edicion Ok  
+manejar login en forma independiente  Ok
+ 
+manejar definicion de la forma de edicion 
+manejar login como ventana  	
+manejar autorizaciones por opciones 
+
 
 
 -------------------------
