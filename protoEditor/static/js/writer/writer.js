@@ -11,9 +11,6 @@ ERR_UPD = 'ERR_UPD'
 ERR_DEL = 'ERR_DEL'
 NEW_ROW = 'NEW_ROW'
 
-
-
-
 Ext.define('Writer.Person', {
     extend: 'Ext.data.Model',
     fields: [{
