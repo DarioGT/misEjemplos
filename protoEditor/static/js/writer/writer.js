@@ -42,8 +42,8 @@ Ext.require([
 
 Ext.onReady(function(){
 	
+    // Otro sinonimo puede ser:  Ext.QuickTips.init();
     Ext.tip.QuickTipManager.init();
-    Ext.QuickTips.init();
 
     setCsRfToken(); 
     
