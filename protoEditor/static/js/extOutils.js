@@ -25,7 +25,8 @@ Ext.outils = function(){
        return '<div class="msg"><h3>' + t + '</h3><p>' + s + '</p></div>';
     }
     return {
-        msg : function(title, format){
+        msg : function(title, format){},  
+        msgOk : function(title, format){
             if(!msgCt){
                 msgCt = Ext.DomHelper.insertFirst(document.body, {id:'msg-div'}, true);
             }
@@ -56,50 +57,37 @@ var setCsRfToken = function (){
 };
 
 
-//// ------------------------------------old school cookie functions
-//var Cookies = {};
-//Cookies.set = function(name, value){
-//     var argv = arguments;
-//     var argc = arguments.length;
-//     var expires = (argc > 2) ? argv[2] : null;
-//     var path = (argc > 3) ? argv[3] : '/';
-//     var domain = (argc > 4) ? argv[4] : null;
-//     var secure = (argc > 5) ? argv[5] : false;
-//     document.cookie = name + "=" + escape (value) +
-//       ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
-//       ((path == null) ? "" : ("; path=" + path)) +
-//       ((domain == null) ? "" : ("; domain=" + domain)) +
-//       ((secure == true) ? "; secure" : "");
-//};
-//
-//Cookies.get = function(name){
-//	var arg = name + "=";
-//	var alen = arg.length;
-//	var clen = document.cookie.length;
-//	var i = 0;
-//	var j = 0;
-//	while(i < clen){
-//		j = i + alen;
-//		if (document.cookie.substring(i, j) == arg)
-//			return Cookies.getCookieVal(j);
-//		i = document.cookie.indexOf(" ", i) + 1;
-//		if(i == 0)
-//			break;
-//	}
-//	return null;
-//};
-//
-//Cookies.clear = function(name) {
-//  if(Cookies.get(name)){
-//    document.cookie = name + "=" +
-//    "; expires=Thu, 01-Jan-70 00:00:01 GMT";
-//  }
-//};
-//
-//Cookies.getCookieVal = function(offset){
-//   var endstr = document.cookie.indexOf(";", offset);
-//   if(endstr == -1){
-//       endstr = document.cookie.length;
-//   }
-//   return unescape(document.cookie.substring(offset, endstr));
-//};
+/**
+ * @class Ext.ux.grid.HeaderToolTip
+ * @namespace Ext.ux.grid
+ *
+ *  Text tooltips should be stored in the grid column definition
+ *  
+ *  Sencha forum url: 
+ *  http://www.sencha.com/forum/showthread.php?132637-Ext.ux.grid.HeaderToolTip
+ */
+Ext.define('Ext.ux.grid.HeaderToolTip', {
+    alias: 'plugin.headertooltip',
+    init : function(grid) {
+        var headerCt = grid.headerCt;
+        grid.headerCt.on("afterrender", function(g) {
+            grid.tip = Ext.create('Ext.tip.ToolTip', {
+                target: headerCt.el,
+                delegate: ".x-column-header",
+                trackMouse: true,
+                renderTo: Ext.getBody(),
+                listeners: {
+                    beforeshow: function(tip) {
+                        var c = headerCt.down('gridcolumn[id=' + tip.triggerElement.id  +']');
+                        if (c  && c.tooltip)
+                            tip.update(c.tooltip);
+                        else
+                            return false;
+                    }
+                }
+            });
+        });
+    }
+});
+
+
