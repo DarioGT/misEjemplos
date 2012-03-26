@@ -4,9 +4,11 @@ Ext.define('Writer.Grid', {
     requires: [
 //        'Ext.grid.plugin.CellEditing',
         'Ext.form.field.Text',
-        'Ext.toolbar.TextItem'
+        'Ext.toolbar.TextItem',
+        'Ext.selection.CheckboxModel'
     ],
   	plugins: ['headertooltip'],
+
 
     listeners: {
         itemmouseenter: function(view, record, item) {
@@ -40,10 +42,20 @@ Ext.define('Writer.Grid', {
     initComponent: function(){
 
         // this.editing = Ext.create('Ext.grid.plugin.CellEditing');
+        
+        var selModel = Ext.create('Ext.selection.CheckboxModel', {
+            // listeners: {
+                // selectionchange: function(sm, selections) {
+                    // grid4.down('#removeButton').setDisabled(selections.length == 0);
+                // }
+            // }
+        });
+        
 
         Ext.apply(this, {
             iconCls: 'icon-grid',
             frame: true,
+            selModel: selModel,
 //            plugins: [this.editing],
             dockedItems: [{
                 xtype: 'toolbar',
@@ -124,6 +136,18 @@ Ext.define('Writer.Grid', {
             
 		   viewConfig: {
 			   
+                listeners: {
+                    cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
+
+                        var linkClicked = (e.target.tagName == 'A');
+                        var clickedDataIndex = view.panel.headerCt.getHeaderAtIndex(cellIndex).dataIndex;
+                        if (linkClicked && clickedDataIndex ) {
+                            alert(record.get('id'));
+                        }
+                    }
+                }, 			   
+			   
+			   
 			   /*   --------------------------------------------------------------------------
 			    *  Esto permite marcar los registros despues de la actualizacion 
 			    */
@@ -193,6 +217,11 @@ Ext.define('Writer.Grid', {
                 dataIndex: 'email',
                 field: {
                     type: 'textfield'
+                }, 
+                
+                // Esto agrega un vinculo dinamico 
+                renderer: function (value) {
+                    return '<a href="#">'+value+'</a>';
                 }
             }, {
                 header: 'Phone',

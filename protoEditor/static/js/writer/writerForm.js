@@ -4,36 +4,64 @@ Ext.define('Writer.Form', {
     alias: 'widget.writerform',
 
     requires: ['Ext.form.field.Text', 
-               'Ext.form.*'],
+               'Ext.form.*' 
+               ],
     
     initComponent: function(){
-        this.addEvents('create');
+        this.addEvents('create' 
+                );
         Ext.apply(this, {
             activeRecord: null,
             iconCls: 'icon-user',
-            frame: true,
-            title: 'User -- All fields are required',
+            frame: true,           // Lo deja blanco o utiliza el theme.
+//            title: 'User -- All fields are requiredxxx',
             defaultType: 'textfield',
-            bodyPadding: 5,
+//            bodyStyle: 'padding:5px 10px 0',
+            maxHeight: 600, 
+            autoScroll: true, 
+            defaults: {
+                bodyStyle: 'padding:5px 5px 0',                
+                anchor: '100%'
+            },
             fieldDefaults: {
-                anchor: '100%',
-                labelAlign: 'right'
+                labelAlign: 'left',
+                anchor: '100%',                
+                autoFitErrors : true, 
+                labelWidth: 80, 
+                msgTarget: 'side' 
             },
             items: [{
-                fieldLabel: 'Email',
-                name: 'email',
-                allowBlank: true
-                // vtype: 'email'
-            }, {
-                fieldLabel: 'Name',
-                name: 'name',
-                xtype: 'protoZoom', 
-                allowBlank: false
-            }, {
-                fieldLabel: 'Phone',
-                name: 'phone',
-                allowBlank: true
-            }],
+                //
+                xtype:'fieldset',
+//              checkboxToggle:true,
+                collapsible: true,
+                title: 'User Information',
+                defaultType: 'textfield',
+//                collapsed: true,
+                layout: 'anchor',
+                
+                items: [{
+                    fieldLabel: 'E mail',
+                    name: 'email',
+                    allowBlank: true,
+                    vtype: 'email',         // Validation 
+                    vtypeText: 'formato de correo no valido'
+                }, {
+                    fieldLabel: 'Nombre',
+                    name: 'name',
+                    xtype: 'protoZoom', 
+                    allowBlank: false,
+                    blankText : 'Este campo es requerido '
+                }, {
+                    fieldLabel: 'Tel',
+                    name: 'phone',
+                    allowBlank: true
+                }], 
+                
+        }],
+
+            
+            
             dockedItems: [{
                 xtype: 'toolbar',
                 dock: 'bottom',
@@ -100,3 +128,6 @@ Ext.define('Writer.Form', {
         this.getForm().reset();
     }
 });
+
+
+

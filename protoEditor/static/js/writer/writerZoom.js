@@ -20,51 +20,112 @@ Ext.define('Ext.ux.field.protoZoom', {
         }, this);
     },
      
-    // override onTriggerClick
     onTriggerClick: function() {
-//        Ext.Msg.alert('Status', 'You clicked my trigger!');
     	this.showZoomForm( this );
     }, 
     
-    
-
-    showZoomForm:  function( me ) {
-    
-    	var win = me.win; 
-    	
-        if (!win) {
-
-        	// var form = Ext.widget('writerform');  
-        	var form = Ext.widget('protozoomcont');  
-
-            win = Ext.widget('window', {
-                title: 'Contact Us',
-                closeAction: 'hide',
-                width: 600,
-                height: 800,
-                minHeight: 400,
-                minWidth: 400,
-                layout: 'fit',
-                resizable: true,
-                modal: true,
-                items: form
-            });
-        }
+  
+    showZoomForm: function( me ) {
         
-        me.win = win; 
-        me.win.show();
-    }
+    /*
 
+     
+     */
+        
+        var protoFormLayout = {
+                // Lo primero es definir la forma 
+                title: 'Mi forma', 
+                modal: true, 
+                
+                // Las diferentes secciones se definen como un arbol ( DOM ) 
+                items: [{
+                    title: 'Section Hor 2 Cols CheckCollapse', 
+                    style: 'Section', 
+                    labelAlign : 'left',
+                    collapsible : true,
+                    fields: [ 'f1', 'f2', 'f3', {'name': 'f4', 'width':20 } ]
+                }, {
+                    title: 'Con FSet', 
+                    style: 'section', 
+                    collapsible : true, 
+                    checkField : 'f1',
+                    fields: [ 'f3', [{'name': 'f1' }, 'f2'],  ['f4', 'f5']]
+
+                }, {
+                    title: 'Con FSet - FSet', 
+                    style: 'section', 
+                    collapsible : true, 
+                    fields: [ ['f1', ['f2', 'f3']],  ['f4', 'f5']]
+//
+//                }, {
+//                    title: 'Section con 2 cajas', 
+//                    style: 'Box', 
+//                    collapsible : true,
+//                    columns: 2, 
+//                    items: [{
+//                        title: 'Section Hor 1 Col Collapsible', 
+//                        style: 'section', 
+//                        collapsible : true, 
+//                        fields: [ 'f1', 'f2']
+//                    }, {
+//                        title: 'Grilla', 
+//                        collapsible : true, 
+//                        grid : 'g1', 
+//                        gridView: 'view'
+//                    }]
+//
+//                }, {
+//                    title: 'Section con tabs', 
+//                    style: 'Tabs', 
+//                    items: [{
+//                        title: 'Hor1', 
+//                        style: 'section', 
+//                        collapsible : true, 
+//                        fields: [ 'f1', 'f2']
+//                    }, {
+//                        title: 'Grilla', 
+//                        collapsible : true, 
+//                        grid : 'g1', 
+//                        gridView: 'view'
+//                    }],
+                }],
+                
+        }; 
+
+        var form = defineProtoForm( protoFormLayout );
+        
+        
+    //  -----------------------------------------------------------------------------
+        
+        
+        win = Ext.widget('window', {
+            title: 'Contact Us',
+            closeAction: 'hide',
+            width: 800, minWidth: 400,
+            height: 600, minHeight: 400,
+            layout: 'fit',
+            resizable: true,
+            modal: true,
+            items: form
+        });
+
+        win.show();
+        
+        
+    }
+    
         
 });
+
+
+
+
 
 Ext.define('Ext.ux.field.protoZoomCont', {
     extend: 'Ext.container.Container',
     alias: 'widget.protozoomcont',
 
-        padding: '0 0 0 20',
-        width: 800,
-        height: 600,
+        padding: '5 5 5 5',
         layout: {
             type: 'vbox',
             align: 'stretch'
@@ -72,9 +133,7 @@ Ext.define('Ext.ux.field.protoZoomCont', {
         items: [{
            itemId: 'form',
            xtype: 'writerform',
-           height: 150,
            margins: '0 0 10 0',
-
            // listeners: {
                // create: function(form, data){
           		// data._ptStatus = 'NEW_ROW'
@@ -83,11 +142,11 @@ Ext.define('Ext.ux.field.protoZoomCont', {
        			// record.setId(0);
                 // store.insert(0, record);
                // }}
-       }, {
-            itemId: 'grid',
-            xtype: 'writergrid',
-            title: 'User List',
-            flex: 1,
+//       }, {
+//            itemId: 'grid',
+//            xtype: 'writergrid',
+//            title: 'User List',
+//            flex: 1,
             // store: store,
             // listeners: {
                 // selectionchange: function(selModel, selected) {
@@ -97,3 +156,169 @@ Ext.define('Ext.ux.field.protoZoomCont', {
         }]
     });
 
+//
+
+
+individual = [{
+        xtype: 'container',
+        layout:'anchor',
+        title   : 'FieldContainers',
+        bodyPadding: 10,
+        defaults: {
+            anchor: '100%',
+            labelWidth: 100
+        },
+        items   : [
+            {
+                xtype     : 'textfield',
+                name      : 'email',
+                fieldLabel: 'Email Address',
+                vtype: 'email',
+                msgTarget: 'side',
+                allowBlank: false
+            },
+            {
+                xtype: 'fieldcontainer',
+//                fieldLabel: 'Date Range',
+                fieldLabel: '',
+                combineErrors: true,
+                msgTarget : 'side',
+                layout: 'hbox',
+                defaults: {
+                    flex: 1,
+//                    hideLabel: true
+                },
+                items: [
+                    {
+                        xtype     : 'datefield',
+                        name      : 'startDate',
+                        fieldLabel: 'Start',
+                        margin: '0 5 0 0',
+                        allowBlank: false
+                    },
+                    {
+                        xtype     : 'datefield',
+                        name      : 'endDate',
+                        fieldLabel: 'End',
+                        allowBlank: false
+                    }
+                ]
+            },
+            {
+                xtype: 'fieldset',
+                title: 'Details',
+                collapsible: true,
+                defaults: {
+                    labelWidth: 89,
+                    anchor: '100%',
+                    layout: {
+                        type: 'hbox',
+                        defaultMargins: {top: 0, right: 5, bottom: 0, left: 0}
+                    }
+                },
+                items: [
+
+                        {
+                            xtype     : 'textfield',
+                            name      : 'email',
+                            fieldLabel: 'Email Address',
+                            vtype: 'email',
+                            msgTarget: 'side',
+                            allowBlank: false, 
+                            width : 30
+                        },
+                        
+                        {
+                        xtype: 'fieldcontainer',
+                        fieldLabel: 'Phone',
+                        combineErrors: true,
+                        msgTarget: 'side',
+                        defaults: {
+                            hideLabel: true
+                        },
+                        items: [
+                            {xtype: 'displayfield', value: '('},
+                            {xtype: 'textfield',    fieldLabel: 'Phone 1', name: 'phone-1', width: 29, allowBlank: false},
+                            {xtype: 'displayfield', value: ')'},
+                            {xtype: 'textfield',    fieldLabel: 'Phone 2', name: 'phone-2', width: 29, allowBlank: false, margins: '0 5 0 0'},
+                            {xtype: 'displayfield', value: '-'},
+                            {xtype: 'textfield',    fieldLabel: 'Phone 3', name: 'phone-3', width: 48, allowBlank: false}
+                        ]
+                    },
+                    {
+                        xtype: 'fieldcontainer',
+                        fieldLabel: 'Time worked',
+                        combineErrors: true,
+                        msgTarget: 'side',
+
+                        defaults: {
+                            hideLabel: true
+                        },
+                        items: [
+                           {
+                               name : 'hours',
+                               xtype: 'numberfield',
+                               width: 48,
+                               allowBlank: false
+                           },
+                           {
+                               xtype: 'displayfield',
+                               value: 'hours'
+                           },
+                           {
+                               name : 'minutes',
+                               xtype: 'numberfield',
+                               width: 48,
+                               allowBlank: false
+                           },
+                           {
+                               xtype: 'displayfield',
+                               value: 'mins'
+                           }
+                        ]
+                    },
+                    {
+                        xtype : 'fieldcontainer',
+                        combineErrors: true,
+                        msgTarget: 'side',
+                        fieldLabel: 'Full Name',
+                        defaults: {
+                            hideLabel: true
+                        },
+                        items : [
+                            {
+                                width:          50,
+                                xtype:          'combo',
+                            },
+                            {
+                                xtype: 'textfield',
+                                flex : 1,
+                                name : 'firstName',
+                                fieldLabel: 'First',
+                                allowBlank: false
+                            },
+                            {
+                                xtype: 'textfield',
+                                flex : 1,
+                                name : 'lastName',
+                                fieldLabel: 'Last',
+                                allowBlank: false,
+                                margins: '0'
+                            }
+                        ]
+                    }, 
+                    
+                    {
+                        xtype     : 'textfield',
+                        name      : 'email2',
+                        fieldLabel: 'Email 2',
+                        vtype: 'email',
+                        msgTarget: 'side',
+                        allowBlank: false, 
+                        width : 30
+                    }
+                    
+                ]
+            }
+        ],
+    }];    

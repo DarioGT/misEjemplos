@@ -172,7 +172,7 @@ Ext.onReady(function(){
         items: [{
            itemId: 'form',
            xtype: 'writerform',
-           height: 150,
+//           height: 150,
            margins: '0 0 10 0',
 
            listeners: {
@@ -203,6 +203,30 @@ Ext.onReady(function(){
     });
 });
 
+//Object converter: Para testear si un elto hace parte de un array se convierte el array en objeto 
+function oc(a)
+{
+  var o = {};
+  for(var i=0;i<a.length;i++)
+  {
+    o[a[i]]='';
+  }
+  return o;
+}
+
+function typeOf(value) {
+    var s = typeof value;
+    if (s === 'object') {
+        if (value) {
+            if (Object.prototype.toString.call(value) == '[object Array]') {
+                s = 'array';
+            }
+        } else {
+            s = 'null';
+        }
+    }
+    return s;
+}
 
 
 // ------------------------------------------------------------------
