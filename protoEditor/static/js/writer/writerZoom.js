@@ -60,7 +60,9 @@ Ext.define('Ext.ux.field.protoZoom', {
                     fields: [['f1', ['f2', 'f3']],  ['f4', 'f5']]
                 }, {
                     title: 'Section con 2 cajas', 
-                    style: 'Box', 
+//                    style: 'Box', 
+//                    style: 'Accordion', 
+                    style: 'Tab', 
                     collapsible : true,
                     minHeigth: 200,
                     items: [{
@@ -69,7 +71,7 @@ Ext.define('Ext.ux.field.protoZoom', {
                         collapsible : true, 
                         fields: [ 'f1', 'f2'] 
                     }, {
-                        title: 'Grilla', 
+                        title: 'Otros', 
                         collapsible : true, 
                         style: 'Section', 
 //                        style : 'grid', 
@@ -136,7 +138,7 @@ Ext.define('Ext.ux.field.protoZoomCont', {
         items: [{
            itemId: 'form',
            xtype: 'writerform',
-           margins: '0 0 10 0',
+//           margins: '0 0 10 0',
            // listeners: {
                // create: function(form, data){
           		// data._ptStatus = 'NEW_ROW'

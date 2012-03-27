@@ -34,6 +34,7 @@ function defineProtoFormField ( prVar ){
             layout: 'hbox',
             margins: 0, 
             pad: 0, 
+            frame: false, 
             defaults: {
                 flex: 1, 
                 // labelAlign: 'top'
@@ -49,8 +50,8 @@ function defineProtoFormField ( prVar ){
             if (prFld2) {
                 if ( ix < (prVar.length-1) ) {
                     prFld2.margins = '0 10 0 0'
-                    // prFld.items.push ({ xtype: 'splitter', flex: 0})
                 } else prFld2.margins = '0 0 0 0'
+                prFld2.frame = false; 
                 prFld.items.push (  prFld2  );
             }
         }   
@@ -139,6 +140,39 @@ function defineProtoFormItem ( prSection ) {
 
             }
         }            
+
+    } else  if ( prSection.style in  oc(['Tab', 'Card', 'Accordion'])) {
+
+        if ( prSection.style == 'Tab' ) {
+            prLayout.xtype = 'tabpanel';
+            prLayout.activeTab = 0;
+        }        
+        if ( prSection.style == 'Card') {
+            prLayout.xtype = 'card';
+            prLayout.activeItem = 0;
+            prLayout.bbar = ['->', {
+                id: 'card-prev',
+                text: '&laquo; Previous'
+            },{
+                id: 'card-next',
+                text: 'Next &raquo;'
+            }]
+        }       
+        if ( prSection.style == 'Accordion') {
+            prLayout.xtype = 'accordion';
+        }   
+        
+        prLayout.defaultType = 'textfield';
+
+        for (var ix in prSection.items  ) {
+            var section  =  prSection.items[ix];
+            prBox = defineProtoFormItem( section ) ;
+            if ( prBox ) {
+                prBox.title = section.title ; 
+                prLayout.items.push ( prBox ); 
+            }
+        }            
+
 
     };
     
