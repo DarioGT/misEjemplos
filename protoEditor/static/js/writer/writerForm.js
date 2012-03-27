@@ -20,7 +20,7 @@ Ext.define('Writer.Form', {
             maxHeight: 600, 
             autoScroll: true, 
             defaults: {
-                bodyStyle: 'padding:5px 5px 0',                
+//                bodyStyle: 'padding:5px 5px 0',                
                 anchor: '100%'
             },
             fieldDefaults: {

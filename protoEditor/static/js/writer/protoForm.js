@@ -33,6 +33,7 @@ function defineProtoFormField ( prVar ){
             msgTarget : 'side',
             layout: 'hbox',
             margins: 0, 
+            pad: 0, 
             defaults: {
                 flex: 1, 
                 // labelAlign: 'top'
@@ -46,10 +47,11 @@ function defineProtoFormField ( prVar ){
             var prVar2  =  prVar[ix];
             var prFld2 = defineProtoFormField( prVar2 )
             if (prFld2) {
-                prFld.items.push (  prFld2  );
                 if ( ix < (prVar.length-1) ) {
-                    prFld.items.push ({ xtype: 'splitter', flex: 0})
-                }
+                    prFld2.margins = '0 10 0 0'
+                    // prFld.items.push ({ xtype: 'splitter', flex: 0})
+                } else prFld2.margins = '0 0 0 0'
+                prFld.items.push (  prFld2  );
             }
         }   
 
@@ -61,7 +63,7 @@ function defineProtoFormField ( prVar ){
 
 function defineProtoFormItem ( prSection ) {
 
-    var prLayout = {};
+    var prLayout = { items : [] };
 
     /*  ---------------------------------------------------------------
      * Se asegura de un tipo de section valida,
@@ -76,6 +78,11 @@ function defineProtoFormItem ( prSection ) {
     // Define los campos 
     if ( prSection.style == 'Section') {
         
+        prLayout.xtype = 'container';
+        prLayout.layout = 'anchor';
+        prLayout.defaultType = 'textfield';
+        prLayout.anchor = '100%';
+
         if ( prSection.title || prSection.collapsible ) {
             prLayout.xtype = 'fieldset';
             if (prSection.title) prLayout.title = prSection.title;
@@ -85,15 +92,8 @@ function defineProtoFormItem ( prSection ) {
             if ( prSection.checkField ) {
                 prLayout.checkboxToggle = true; 
             }
-        } else { 
-
-            prLayout.xtype = 'container';
-            
         } 
 
-        prLayout.layout = 'anchor';
-        prLayout.defaultType = 'textfield';
-        prLayout.anchor = '100%';
 
         prLayout.defaults = { flex : 1, anchor : '100%' }; 
         
@@ -106,7 +106,6 @@ function defineProtoFormItem ( prSection ) {
         if ( prSection.labelWidth ) prLayout.fieldDefaults.labelWidth =prSection.labelWidth;
         if ( prSection.labelStyle ) prLayout.fieldDefaults.labelStyle =prSection.labelStyle;
 
-        prLayout.items  = [];
         for (var ix in prSection.fields  ) {
             var prVar  =  prSection.fields[ix];
             prFld = defineProtoFormField( prVar )
@@ -114,19 +113,34 @@ function defineProtoFormItem ( prSection ) {
         }   
 
 
-    } else {
-        
-        if ( prSection.style == 'box' ) {
+    } else  if ( prSection.style == 'Box' ) {
 
-        }
+        prLayout.xtype = 'container';
+        prLayout.layout = 'hbox';
+        prLayout.defaultType = 'textfield';
+        prLayout.anchor = '100%';
+
+        if ( prSection.title || prSection.collapsible ) {
+            prLayout.xtype = 'fieldset';
+            if (prSection.title) prLayout.title = prSection.title;
+            if (prSection.collapsible)  prLayout.collapsible = prSection.collapsible;
+            if (prSection.collaped) prLayout.collapsed = prSection.collapsed;
+        } 
 
         for (var ix in prSection.items  ) {
             var section  =  prSection.items[ix];
-            prFormLayout.push ( defineProtoFormItem( section ) ); 
+            prBox = defineProtoFormItem( section ) ;
+            if ( prBox ) {
+                prBox.flex = 1; 
+                if ( ix < (prSection.items.length-1) ) {
+                    prBox.margins = '0 10 0 0'
+                } else prBox.margins = '0 0 0 0'
+                prLayout.items.push ( prBox ); 
+
+            }
         }            
 
     };
-    
     
     return prLayout;  
     
@@ -151,7 +165,7 @@ function defineProtoForm ( protoForm ) {
         title: protoForm.title,  
         frame: true,
         autoScroll : true, 
-        bodyPadding: 10,
+        // bodyPadding: 10,
         xtype: 'container',
         layout:'anchor',
         defaults: {

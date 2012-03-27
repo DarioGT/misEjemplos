@@ -46,34 +46,37 @@ Ext.define('Ext.ux.field.protoZoom', {
                     fields: [ 'f1', 'f2', 'f3', {'name': 'f4', 'width':20 } ]
                 }, {
                     title: 'Con FSet', 
-                    style: 'section', 
+                    style: 'Section', 
                     collapsible : true, 
+                    collapsed : true, 
                     checkField : 'f1',
                     fields: [ 'f3', [{'name': 'f1' }, 'f2'],  ['f4', 'f5']]
 
                 }, {
                     title: 'Con FSet - FSet', 
-                    style: 'section', 
+                    style: 'Section', 
                     collapsible : true, 
-                    fields: [ ['f1', ['f2', 'f3']],  ['f4', 'f5']]
-//
-//                }, {
-//                    title: 'Section con 2 cajas', 
-//                    style: 'Box', 
-//                    collapsible : true,
-//                    columns: 2, 
-//                    items: [{
-//                        title: 'Section Hor 1 Col Collapsible', 
-//                        style: 'section', 
-//                        collapsible : true, 
-//                        fields: [ 'f1', 'f2']
-//                    }, {
-//                        title: 'Grilla', 
-//                        collapsible : true, 
-//                        grid : 'g1', 
-//                        gridView: 'view'
-//                    }]
-//
+                    collapsed : true, 
+                    fields: [['f1', ['f2', 'f3']],  ['f4', 'f5']]
+                }, {
+                    title: 'Section con 2 cajas', 
+                    style: 'Box', 
+                    collapsible : true,
+                    minHeigth: 200,
+                    items: [{
+                        title: 'Campos ', 
+                        style: 'Section', 
+                        collapsible : true, 
+                        fields: [ 'f1', 'f2'] 
+                    }, {
+                        title: 'Grilla', 
+                        collapsible : true, 
+                        style: 'Section', 
+//                        style : 'grid', 
+                        fields: [ 'f1', 'f2'], 
+                        gridView: 'view'
+                    }]
+
 //                }, {
 //                    title: 'Section con tabs', 
 //                    style: 'Tabs', 
@@ -125,7 +128,7 @@ Ext.define('Ext.ux.field.protoZoomCont', {
     extend: 'Ext.container.Container',
     alias: 'widget.protozoomcont',
 
-        padding: '5 5 5 5',
+//        padding: '5 5 5 5',
         layout: {
             type: 'vbox',
             align: 'stretch'
@@ -163,7 +166,7 @@ individual = [{
         xtype: 'container',
         layout:'anchor',
         title   : 'FieldContainers',
-        bodyPadding: 10,
+//        bodyPadding: 10,
         defaults: {
             anchor: '100%',
             labelWidth: 100

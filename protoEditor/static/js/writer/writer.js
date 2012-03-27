@@ -161,7 +161,7 @@ Ext.onReady(function(){
     });
 
     var main = Ext.create('Ext.container.Container', {
-        padding: '0 0 0 20',
+//        padding: '0 0 0 20',
         width: 800,
         height: 600,
         renderTo: document.body,
@@ -173,7 +173,7 @@ Ext.onReady(function(){
            itemId: 'form',
            xtype: 'writerform',
 //           height: 150,
-           margins: '0 0 10 0',
+//           margins: '0 0 10 0',
 
            listeners: {
                create: function(form, data){
