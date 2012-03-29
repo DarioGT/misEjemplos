@@ -62,7 +62,7 @@ function defineProtoFormField ( prVar ){
     return prFld; 
 }
 
-function defineProtoFormItem ( prSection ) {
+function defineProtoFormItem ( parent, prSection ) {
 
     var prLayout = { items : [] };
 
@@ -80,27 +80,33 @@ function defineProtoFormItem ( prSection ) {
     if ( prSection.style == 'Section') {
         
         prLayout.xtype = 'container';
+        prLayout.frame = true;
+        prLayout.border = 10;
+        prLayout.margins = '10 10 0';
         prLayout.layout = 'anchor';
         prLayout.defaultType = 'textfield';
         prLayout.anchor = '100%';
 
-        if ( prSection.title || prSection.collapsible ) {
+        if ( prSection.title || prSection.collapsible  ) {
             prLayout.xtype = 'fieldset';
-            if (prSection.title) prLayout.title = prSection.title;
+            if (prSection.title)        prLayout.title = prSection.title;
             if (prSection.collapsible)  prLayout.collapsible = prSection.collapsible;
-            if (prSection.collaped) prLayout.collapsed = prSection.collapsed;
-
-            if ( prSection.checkField ) {
-                prLayout.checkboxToggle = true; 
-            }
+            if (prSection.collapsed)     prLayout.collapsed = prSection.collapsed;
+            if (prSection.checkField)   prLayout.checkboxToggle = true;
         } 
 
+        if ( parent in oc(['Card', 'Accordion'])) {
+            prLayout.xtype = 'panel';
+            prLayout.margins = '2';
+            prLayout.frame = true;
+            prLayout.bodyBorder = true;
+        }            
 
         prLayout.defaults = { flex : 1, anchor : '100%' }; 
+        prLayout.defaults.margins = '10 10 0';
         
 //      margins  TRBL,  TB RL, T RL B
         if ( prSection.margins ) prLayout.defaults.margins = prSection.margins;
-        // else prLayout.defaults.margins = '10 10 0';
 
         prLayout.fieldDefaults  = {};
         if ( prSection.labelAlign ) prLayout.fieldDefaults.labelAlign =prSection.labelAlign;
@@ -116,13 +122,15 @@ function defineProtoFormItem ( prSection ) {
 
     } else  if ( prSection.style == 'Box' ) {
 
-        prLayout.xtype = 'container';
+        // prLayout.xtype = 'container';
+        prLayout.xtype = 'panel';
         prLayout.layout = 'hbox';
         prLayout.defaultType = 'textfield';
         prLayout.anchor = '100%';
 
         if ( prSection.title || prSection.collapsible ) {
-            prLayout.xtype = 'fieldset';
+            // prLayout.xtype = 'fieldset';
+            prLayout.xtype = 'panel';
             if (prSection.title) prLayout.title = prSection.title;
             if (prSection.collapsible)  prLayout.collapsible = prSection.collapsible;
             if (prSection.collaped) prLayout.collapsed = prSection.collapsed;
@@ -130,49 +138,40 @@ function defineProtoFormItem ( prSection ) {
 
         for (var ix in prSection.items  ) {
             var section  =  prSection.items[ix];
-            prBox = defineProtoFormItem( section ) ;
+            prBox = defineProtoFormItem( prSection.style, section ) ;
             if ( prBox ) {
                 prBox.flex = 1; 
                 if ( ix < (prSection.items.length-1) ) {
-                    prBox.margins = '0 10 0 0'
+                    prBox.margins = '0 5 0 0'
                 } else prBox.margins = '0 0 0 0'
                 prLayout.items.push ( prBox ); 
 
             }
         }            
 
-    } else  if ( prSection.style in  oc(['Tab', 'Card', 'Accordion'])) {
+    } else  if ( prSection.style in  oc(['Tab',  'Accordion'])) {
+
+        if ( prSection.height ) prLayout.height = prSection.height; 
 
         if ( prSection.style == 'Tab' ) {
             prLayout.xtype = 'tabpanel';
             prLayout.activeTab = 0;
         }        
-        if ( prSection.style == 'Card') {
-            prLayout.xtype = 'card';
-            prLayout.activeItem = 0;
-            prLayout.bbar = ['->', {
-                id: 'card-prev',
-                text: '&laquo; Previous'
-            },{
-                id: 'card-next',
-                text: 'Next &raquo;'
-            }]
-        }       
         if ( prSection.style == 'Accordion') {
-            prLayout.xtype = 'accordion';
+            prLayout.layout = 'accordion';
+            if ( !prSection.height )  prLayout.height = 200;
+            // prLayout.fill = true;
         }   
         
-        prLayout.defaultType = 'textfield';
 
         for (var ix in prSection.items  ) {
             var section  =  prSection.items[ix];
-            prBox = defineProtoFormItem( section ) ;
+            prBox = defineProtoFormItem( prSection.style,  section ) ;
             if ( prBox ) {
                 prBox.title = section.title ; 
                 prLayout.items.push ( prBox ); 
             }
         }            
-
 
     };
     
@@ -187,10 +186,10 @@ function defineProtoForm ( protoForm ) {
     var prFormLayout = []; 
     
     for (var ixV in protoForm.items  ) {
-        var section  =  protoForm.items[ixV];
-        prFormLayout.push ( defineProtoFormItem( section ) ); 
+        var section = protoForm.items[ixV];
+        var prItem  = defineProtoFormItem( 'panel',  section )
+        prFormLayout.push ( prItem  ); 
     }
-
     
 
     // combine all that into one huge form
