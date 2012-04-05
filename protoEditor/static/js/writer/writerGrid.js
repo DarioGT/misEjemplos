@@ -5,16 +5,14 @@ Ext.define('Writer.Grid', {
 //        'Ext.grid.plugin.CellEditing',
         'Ext.form.field.Text',
         'Ext.toolbar.TextItem',
-        'Ext.selection.CheckboxModel'
+//        'Ext.selection.CheckboxModel'
     ],
   	plugins: ['headertooltip'],
 
 
     listeners: {
+        // Esto maneja los tooltip en las las filas
         itemmouseenter: function(view, record, item) {
-        	
-        	// var msg = record.get('_ptRowMessage')
-
         	var msg = record.get('_ptStatus')
 			switch (msg)
 			{
@@ -31,11 +29,11 @@ Ext.define('Writer.Grid', {
 			default:
 			  msg = ''	
 			}        	
+        	// Asigna un tooltip a la fila, pero respeta los de cada celda y los de los Actiosn
         	Ext.fly(item).set({'data-qtip': msg });
             
             // Dgt :  Este tooltip evita las actions columns 
 	        // Ext.fly(item).select('.x-grid-cell:not(.x-action-col-cell)').set({'data-qtip': 'My tooltip: ' + record.get('name')});
-
         }
     },             
 
@@ -55,7 +53,7 @@ Ext.define('Writer.Grid', {
         Ext.apply(this, {
             iconCls: 'icon-grid',
             frame: true,
-            selModel: selModel,
+//            selModel: selModel,
 //            plugins: [this.editing],
             dockedItems: [{
                 xtype: 'toolbar',
@@ -137,8 +135,9 @@ Ext.define('Writer.Grid', {
 		   viewConfig: {
 			   
                 listeners: {
+                    
+                    // Esto maneja los vinculos en los campos 
                     cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
-
                         var linkClicked = (e.target.tagName == 'A');
                         var clickedDataIndex = view.panel.headerCt.getHeaderAtIndex(cellIndex).dataIndex;
                         if (linkClicked && clickedDataIndex ) {
@@ -148,9 +147,7 @@ Ext.define('Writer.Grid', {
                 }, 			   
 			   
 			   
-			   /*   --------------------------------------------------------------------------
-			    *  Esto permite marcar los registros despues de la actualizacion 
-			    */
+                //	Esto permite marcar los registros despues de la actualizacion 
 		        getRowClass: function(record, rowIndex, rowParams, store){
 		        	var stRec = record.get('_ptStatus');
 		        	
@@ -185,13 +182,13 @@ Ext.define('Writer.Grid', {
 		   },
             
             columns: [{
-                // width: 25,
-                // sortable: false,
-                // dragable: false,
-                // hideable: false, 
-                // resizable: false,
-                // dataIndex: '_ptStatus'  
-            // }, {
+                 width: 25,
+                 sortable: false,
+                 dragable: false,
+                 hideable: false, 
+                 resizable: false,
+                 dataIndex: '_ptStatus'  
+             }, {
                 text: 'ID',
                 width: 40,
                 sortable: true,

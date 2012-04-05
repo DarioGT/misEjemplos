@@ -1,153 +1,140 @@
-//
-    
+//  Prueba de formas generadas en el protipador 
+//  Se toma la variable en protoForm y se trae aqui 
 
+var individual = [
+                                   {
+                                       "items" : [
+                                               {
+                                                   "xtype" : "fieldcontainer",
+                                                   defaultType : 'textfield',
 
-    
+                                                   "combineErrors" : true,
+                                                   "layout" : "hbox",
+                                                   "margins" : 0,
+                                                   "pad" : 0,
+                                                   "frame" : false,
+                                                   "defaults" : {
+                                                       "flex" : 1
+                                                   },
+                                                   "items" : [
+                                                           {
+                                                               "allowBlank" : false,
+                                                               "readOnly" : false,
+                                                               "fieldLabel" : "Vues",
+                                                               "name" : "code",
+                                                               "margins" : "0 10 0 0",
+                                                               "frame" : false,
+                                                               "flex" : 1
+                                                           }, {
+                                                               "allowBlank" : false,
+                                                               "readOnly" : false,
+                                                               "fieldLabel" : "category",
+                                                               "name" : "category",
+                                                               "margins" : "0 10 0 0",
+                                                               "frame" : false,
+                                                               "flex" : 1
+                                                           }, {
+                                                               "name" : "domain",
+                                                               "margins" : "0 0 0 0",
+                                                               "frame" : false
+                                                           }
+                                                   ]
+                                               }, {
+                                                   "allowBlank" : false,
+                                                   "readOnly" : false,
+                                                   "fieldLabel" : "Descriptions",
+                                                   "xtype" : "htmleditor",
+                                                   "height" : 200,
+                                                   "labelAlign" : "top",
+                                                   "name" : "description",
+                                                   "flex" : 1,
+                                                   "anchor" : "100%",
+                                                   "msgTarget" : "side",
+                                                   "margins" : "10 10 0"
+                                               }
+                                       ],
+                                       "xtype" : "panel",
+                                       "frame" : true,
+                                       "border" : 10,
+                                       "margins" : "10 10 0",
+                                       "layout" : "anchor",
+                                       "defaultType" : "textfield",
+                                       "anchor" : "100%",
+                                       "defaults" : {
+                                           "flex" : 1,
+                                           "anchor" : "100%",
+                                           "xtype" : "textfield",
+                                           "msgTarget" : "side",
+                                           "margins" : "10 10 0",
+                                           "allowBlank" : false,
+                                           "readOnly" : false
+                                       },
+                                       "fieldDefaults" : {},
+                                       "autoScroll" : true
+                                   }
+                               ]
 
-
-    var individual = {
-            xtype: 'container',
-            layout: 'hbox',
-            margin: '0 0 10',
-            items: [{
-                xtype: 'container',
-                flex: 1,
-                title: 'Individual Checkboxes',
-                defaultType: 'textfield', // each item will be a checkbox
-                layout: 'anchor',
-                defaults: {
-//                    anchor: '30%',
-                    hideEmptyLabel: false
+var individual2 = [
+    // Contact info
+    {
+        "xtype" : 'fieldset',
+        // title: 'Your Contact Information',
+        defaultType : 'textfield',
+        layout : 'anchor',
+        defaults : {
+            anchor : '100%'
+        },
+        items : [
+                {
+                    "xtype" : 'fieldcontainer',
+                    fieldLabel : 'Name',
+                    layout : 'hbox',
+                    combineErrors : true,
+//                    defaultType : 'textfield',
+                    defaults : {
+                        hideLabel : 'true'
+                    },
+                    items : [
+                            {
+                                name : 'firstName',
+                                fieldLabel : 'First Name',
+                                flex : 2,
+                                emptyText : 'First',
+                                allowBlank : false
+                            }, {
+                                name : 'lastName',
+                                fieldLabel : 'Last Name',
+                                flex : 3,
+                                margins : '0 0 0 6',
+                                emptyText : 'Last',
+                                allowBlank : false
+                            }
+                    ]
                 },
-                items: [{
-                    anchor: '49%',
-                    xtype: 'textfield',
-                    name: 'txt-test1',
-                    fieldLabel: 'Alignment Test'
-                }, {
-                    anchor: '49%',
-                    fieldLabel: 'Dog',
-                    name: 'fav-animal-dog',
-                    inputValue: 'dog'
-                }, {
-                    anchor: '49%',
-                    minWidth : 100, 
-                    fieldLabel: 'Cat',
-                    name: 'fav-animal-cat',
-                    inputValue: 'cat'
-                }, {
-                    anchor: '49%',
-                    fieldLabel: 'Monkey',
-                    name: 'fav-animal-monkey',
-                    inputValue: 'monkey'
-                }]
-            }, {
-                xtype: 'component',
-                width: 10
-            }, {
-                xtype: 'fieldset',
-                flex: 1,
-                title: 'Individual Radios',
-                defaultType: 'radio', // each item will be a radio button
-                layout: 'anchor',
-                defaults: {
-                    anchor: '100%',
-                    hideEmptyLabel: false
-                },
-                items: [{
-                    xtype: 'textfield',
-                    name: 'txt-test2',
-                    width: '50%',
-                    fieldLabel: 'Alignment Test'
-                }, {
-                    width: '50%',
-                    fieldLabel: 'Favorite Color',
-                    boxLabel: 'Red',
-                    name: 'fav-color',
-                    inputValue: 'red'
-                }, {
-                    width: '50%',
-                    boxLabel: 'Blue',
-                    name: 'fav-color',
-                    inputValue: 'blue'
-                }, {
-                    boxLabel: 'Green',
-                    name: 'fav-color',
-                    inputValue: 'green'
-                }]
-            }]
-        };
-    
-    
-    individual = {
-            xtype: 'container',
-        layout:'anchor',
-        items:[{
-            title:'Item 1',
-            html:'100% 20%',
-            width: '50%',
-            anchor:'40%'
-        },{
-            title:'Item 2',
-            html:'50% 30%',
-            width: '50%',
-            anchor:'40%'
-//        },{
-//            title:'Item 3',
-//            html:'-100 50%',
-//            anchor:'-100 50%'
-        }]
-    };    
-    
-    
-    individual = Ext.create('Ext.Panel', {
-        width: 500,
-        height: 400,
-        title: "VBoxLayout Panel",
-        layout: {
-            type: 'vbox',
-            align: 'center'
-        },
-        renderTo: document.body,
-        items: [{
-            xtype: 'panel',
-            title: 'Inner Panel One',
-//            width: 250,
-            flex: 2
-        },
-        {
-            xtype: 'panel',
-            title: 'Inner Panel Two',
-//            width: 250,
-            flex: 4
-        },
-        {
-            xtype: 'panel',
-            title: 'Inner Panel Three',
-//            width: '50%',
-            flex: 4
-        }]
-    });
-
-    
-//  
-//  items: [{
-//      columnWidth:.3,
-//      fieldLabel: 'E mail',
-//      name: 'email',
-//      allowBlank: true,
-//      vtype: 'email',         // Validation 
-//      vtypeText: 'formato de correo no valido'
-//  }, {
-////      columnWidth:.5,
-//      fieldLabel: 'Nombre',
-//      name: 'name',
-//      xtype: 'protoZoom', 
-//      allowBlank: false,
-//      blankText : 'Este campo es requerido '
-//  }, {
-//      fieldLabel: 'Tel',
-//      name: 'phone',
-//      allowBlank: true
-//  }]
-
+                {
+                    "xtype" : 'container',
+                    layout : 'hbox',
+                    defaultType : 'textfield',
+                    items : [
+                            {
+                                fieldLabel : 'Email Address',
+                                name : 'email',
+                                vtype : 'email',
+                                flex : 1,
+                                allowBlank : false
+                            },
+                            {
+                                fieldLabel : 'Phone Number',
+                                labelWidth : 100,
+                                name : 'phone',
+                                width : 190,
+                                emptyText : 'xxx-xxx-xxxx',
+                                maskRe : /[\d\-]/,
+                                regex : /^\d{3}-\d{3}-\d{4}$/,
+                                regexText : 'Must be in the format xxx-xxx-xxxx'
+                            }
+                    ]
+                }
+        ]
+    }
+]

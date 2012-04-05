@@ -276,8 +276,8 @@ function defineProtoForm(protoForm) {
             anchor : '100%'
         },
         
-        items : prFormLayout,
-        // items: individual,
+//        items : prFormLayout,
+         items: individual,
         
         buttons : [
                 {

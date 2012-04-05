@@ -1,5 +1,5 @@
 
-//  Forma de ejemplo 
+//  Forma de ejemplo   NO SE CARGA EN EL PROYECTO 
 
 
         	var form = Ext.widget('form', {
@@ -466,3 +466,84 @@
                         }
                     ],
                 }];                
+            
+////
+            
+            
+
+
+            var individual = {
+                    xtype: 'container',
+                    layout: 'hbox',
+                    margin: '0 0 10',
+                    items: [{
+                        xtype: 'container',
+                        flex: 1,
+                        title: 'Individual Checkboxes',
+                        defaultType: 'textfield', // each item will be a checkbox
+                        layout: 'anchor',
+                        defaults: {
+//                            anchor: '30%',
+                            hideEmptyLabel: false
+                        },
+                        items: [{
+                            anchor: '49%',
+                            xtype: 'textfield',
+                            name: 'txt-test1',
+                            fieldLabel: 'Alignment Test'
+                        }, {
+                            anchor: '49%',
+                            fieldLabel: 'Dog',
+                            name: 'fav-animal-dog',
+                            inputValue: 'dog'
+                        }, {
+                            anchor: '49%',
+                            minWidth : 100, 
+                            fieldLabel: 'Cat',
+                            name: 'fav-animal-cat',
+                            inputValue: 'cat'
+                        }, {
+                            anchor: '49%',
+                            fieldLabel: 'Monkey',
+                            name: 'fav-animal-monkey',
+                            inputValue: 'monkey'
+                        }]
+                    }, {
+                        xtype: 'component',
+                        width: 10
+                    }, {
+                        xtype: 'fieldset',
+                        flex: 1,
+                        title: 'Individual Radios',
+                        defaultType: 'radio', // each item will be a radio button
+                        layout: 'anchor',
+                        defaults: {
+                            anchor: '100%',
+                            hideEmptyLabel: false
+                        },
+                        items: [{
+                            xtype: 'textfield',
+                            name: 'txt-test2',
+                            width: '50%',
+                            fieldLabel: 'Alignment Test'
+                        }, {
+                            width: '50%',
+                            fieldLabel: 'Favorite Color',
+                            boxLabel: 'Red',
+                            name: 'fav-color',
+                            inputValue: 'red'
+                        }, {
+                            width: '50%',
+                            boxLabel: 'Blue',
+                            name: 'fav-color',
+                            inputValue: 'blue'
+                        }, {
+                            boxLabel: 'Green',
+                            name: 'fav-color',
+                            inputValue: 'green'
+                        }]
+                    }]
+                };
+                        
+
+            
