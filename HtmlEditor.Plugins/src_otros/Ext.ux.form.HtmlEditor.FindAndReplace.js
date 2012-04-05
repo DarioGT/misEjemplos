@@ -124,6 +124,9 @@ Ext.define('Ext.ux.form.HtmlEditor.FindAndReplace', {
         var findValue = frm.findField('find').getValue();
         var replaceValue = frm.findField('replace').getValue();
 
+        //Dgt 
+        this.cmp.sourceEditMode = true; 
+        
         if(this.cmp.sourceEditMode) {
             // source edit mode
             var textarea = this.cmp.el.dom;

@@ -11,6 +11,7 @@ Ext.define('Ext.ux.form.HtmlEditor.Table', {
 
     // Table language text
     langTitle       : 'Insert Table',
+    langToolTip     : 'Insert table de NxN with configurable border',
     langInsert      : 'Insert',
     langCancel      : 'Cancel',
     langRows        : 'Rows',
@@ -33,8 +34,10 @@ Ext.define('Ext.ux.form.HtmlEditor.Table', {
     /**
      * @cfg {Array} tableBorderOptions
      * A nested array of value/display options to present to the user for table border style. Defaults to a simple list of 5 varrying border types.
+     *  
      */
-    tableBorderOptions: [['none', 'None'], ['1px solid #000', 'Sold Thin'], ['2px solid #000', 'Solid Thick'], ['1px dashed #000', 'Dashed'], ['1px dotted #000', 'Dotted']],
+    tableBorderOptions: [['1px dotted #000', 'Dotted'],['1px solid #000', 'Sold Thin'], ['2px solid #000', 'Solid Thick']],
+//    ['none', 'None'], ['1px dashed #000', 'Dashed'],
 
     // private
     init: function(cmp){
@@ -44,116 +47,124 @@ Ext.define('Ext.ux.form.HtmlEditor.Table', {
 
     // private
     onRender: function(){
-        var btn = this.cmp.getToolbar().add({
+        var btn = this.cmp.getToolbar().add('-', {
             iconCls: 'x-edit-table',
-            handler: function(){
-                if (!this.tableWindow){
-                    this.tableWindow = Ext.create('Ext.window.Window',{
-                        title       : this.langTitle,
-                        closeAction : 'hide',
-                        width       : 300,
-                        items       : [{
-                            itemId      : 'insert-table',
-                            xtype       : 'form',
-                            border      : false,
-                            plain       : true,
-                            bodyStyle   : 'padding: 10px;',
-                            labelWidth  : 65,
-                            labelAlign  : 'right',
-                            items       : [{
-                                xtype           : 'numberfield',
-                                allowBlank      : false,
-                                allowDecimals   : false,
-                                fieldLabel      : this.langRows,
-                                name            : 'row',
-                                width           : 150,
-                                minValue        : 1,
-                                value           : 1
-                            }, {
-                                xtype           : 'numberfield',
-                                allowBlank      : false,
-                                allowDecimals   : false,
-                                fieldLabel      : this.langColumns,
-                                name            : 'col',
-                                width           : 150,
-                                minValue        : 1,
-                                value           : 1
-                            }, {
-                                xtype           : 'combo',
-                                fieldLabel      : this.langBorder,
-                                name            : 'border',
-                                forceSelection  : true,
-                                mode            : 'local',
-                                store           : Ext.create('Ext.data.ArrayStore',{
-                                    autoDestroy : true,
-                                    fields      : ['spec', 'val'],
-                                    data        : this.tableBorderOptions
-                                }),
-                                triggerAction   : 'all',
-                                value           : 'none',
-                                displayField    : 'val',
-                                valueField      : 'spec',
-                                anchor          : '-15'
-                            }, {
-                                xtype           : 'checkbox',
-                                fieldLabel      : this.langCellLabel,
-                                checked         : this.showCellLocationText,
-                                listeners       : {
-                                    check: function(){
-                                        this.showCellLocationText = !this.showCellLocationText;
-                                    },
-                                    scope: this
-                                }
-                            }]
-                        }],
-                        buttons: [{
-                            text    : this.langInsert,
-                            handler : function(){
-                                var frm = this.tableWindow.getComponent('insert-table').getForm();
-                                if (frm.isValid()) {
-                                    var border = frm.findField('border').getValue();
-                                    var rowcol = [frm.findField('row').getValue(), frm.findField('col').getValue()];
-                                    if (rowcol.length == 2 && rowcol[0] > 0 && rowcol[1] > 0) {
-                                        var colwidth = Math.floor(100/rowcol[0]);
-                                        var html = "<table style='border-collapse: collapse'>";
-                                        var cellText = '&nbsp;';
-                                        if (this.showCellLocationText){ cellText = this.cellLocationText; }
-                                        for (var row = 0; row < rowcol[0]; row++) {
-                                            html += "<tr>";
-                                            for (var col = 0; col < rowcol[1]; col++) {
-                                                html += "<td width='" + colwidth + "%' style='border: " + border + ";'>" + Ext.String.format(cellText, (row+1), String.fromCharCode(col+65)) + "</td>";
-                                            }
-                                            html += "</tr>";
-                                        }
-                                        html += "</table>";
-                                        this.cmp.insertAtCursor(html);
-                                    }
-                                    this.tableWindow.hide();
-                                }else{
-                                    if (!frm.findField('row').isValid()){
-                                        frm.findField('row').getEl().frame();
-                                    }else if (!frm.findField('col').isValid()){
-                                        frm.findField('col').getEl().frame();
-                                    }
-                                }
-                            },
-                            scope: this
-                        }, {
-                            text    : this.langCancel,
-                            handler : function(){
-                                this.tableWindow.hide();
-                            },
-                            scope   : this
-                        }]
-                    });
-                }
-                this.tableWindow.show();
-            },
+            handler: showTableIns,
             scope   : this,
             tooltip : {
-                title: this.langTitle
+                title: this.langTitle,
+                text: this.langToolTip
             },
             overflowText: this.langTitle
         });
+        
+        function showTableIns(){
+            if (!this.tableWindow){
+                this.tableWindow = Ext.create('Ext.window.Window',{
+                    title       : this.langTitle,
+                    closeAction : 'hide',
+                    width       : 300,
+                    items       : [{
+                        itemId      : 'insert-table',
+                        xtype       : 'form',
+                        border      : false,
+                        plain       : true,
+                        bodyStyle   : 'padding: 10px;',
+                        labelWidth  : 65,
+                        labelAlign  : 'right',
+                        items       : [{
+                            xtype           : 'numberfield',
+                            allowBlank      : false,
+                            allowDecimals   : false,
+                            fieldLabel      : this.langRows,
+                            name            : 'row',
+                            width           : 150,
+                            minValue        : 1,
+                            value           : 1
+                        }, {
+                            xtype           : 'numberfield',
+                            allowBlank      : false,
+                            allowDecimals   : false,
+                            fieldLabel      : this.langColumns,
+                            name            : 'col',
+                            width           : 150,
+                            minValue        : 1,
+                            value           : 1
+                        }, {
+                            xtype           : 'combo',
+                            fieldLabel      : this.langBorder,
+                            name            : 'border',
+                            forceSelection  : true,
+                            mode            : 'local',
+                            store           : Ext.create('Ext.data.ArrayStore',{
+                                autoDestroy : true,
+                                fields      : ['spec', 'val'],
+                                data        : this.tableBorderOptions
+                            }),
+                            triggerAction   : 'all',
+                            value           : '1px dotted #000',
+                            displayField    : 'val',
+                            valueField      : 'spec',
+                            anchor          : '-15',
+                            editable        : false
+
+//                        }, {
+//                            xtype           : 'checkbox',
+//                            fieldLabel      : this.langCellLabel,
+//                            checked         : this.showCellLocationText,
+//                            listeners       : {
+//                                check: function(){
+//                                    this.showCellLocationText = !this.showCellLocationText;
+//                                },
+//                                scope: this
+//                            }
+                        }]
+                    }],
+                    buttons: [{
+                        text    : this.langInsert,
+                        handler : function(){
+                            var frm = this.tableWindow.getComponent('insert-table').getForm();
+                            if (frm.isValid()) {
+                                var border = frm.findField('border').getValue();
+                                var rowcol = [frm.findField('row').getValue(), frm.findField('col').getValue()];
+                                if (rowcol.length == 2 && rowcol[0] > 0 && rowcol[1] > 0) {
+                                    var colwidth = Math.floor(100/rowcol[1]);
+                                    var html = "<table style='border-collapse: collapse'>";
+                                    var cellText = '&nbsp;';
+//                                  if (this.showCellLocationText){ cellText = this.cellLocationText; }
+                                    for (var row = 0; row < rowcol[0]; row++) {
+                                        html += "<tr>";
+                                        for (var col = 0; col < rowcol[1]; col++) {
+                                            html += "<td width='" + colwidth + "%' style='border: " + border + ";'>" 
+                                            html += cellText; 
+//                                          html += Ext.String.format(cellText, (row+1), String.fromCharCode(col+65)) 
+                                            html += "</td>";
+                                        }
+                                        html += "</tr>";
+                                    }
+                                    html += "</table>";
+                                    this.cmp.insertAtCursor(html);
+                                }
+                                this.tableWindow.hide();
+                            }else{
+                                if (!frm.findField('row').isValid()){
+                                    frm.findField('row').getEl().frame();
+                                }else if (!frm.findField('col').isValid()){
+                                    frm.findField('col').getEl().frame();
+                                }
+                            }
+                        },
+                        scope: this
+                    }, {
+                        text    : this.langCancel,
+                        handler : function(){
+                            this.tableWindow.hide();
+                        },
+                        scope   : this
+                    }]
+                });
+            }
+            this.tableWindow.show();
+        };
     }
 });

@@ -12,7 +12,7 @@ Ext.define('Ext.ux.form.HtmlEditor.RemoveFormat', {
         enableOnSelection: true,
         cmd: 'removeFormat',
         tooltip: {
-            title: 'Remove Formatting'
+            text: 'Remove Formatting'
         },
         overflowText: 'Remove Formatting'
     }]

@@ -13,14 +13,14 @@ Ext.define('Ext.ux.form.HtmlEditor.SubSuperScript', {
         enableOnSelection: true,
         cmd: 'subscript',
         tooltip: {
-            title: 'Subscript'
+            text: 'Subscript'
         },
         overflowText: 'Subscript'
     }, {
         enableOnSelection: true,
         cmd: 'superscript',
         tooltip: {
-            title: 'Superscript'
+            text: 'Superscript'
         },
         overflowText: 'Superscript'
     }]

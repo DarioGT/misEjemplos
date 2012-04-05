@@ -11,6 +11,7 @@ Ext.define('Ext.ux.form.HtmlEditor.SpecialCharacters', {
 
     // SpecialCharacters language text
     langTitle   : 'Insert Special Character',
+    langToolTip : 'Insert special languaje character ',
     langInsert  : 'Insert',
     langCancel  : 'Cancel',
 
@@ -40,72 +41,74 @@ Ext.define('Ext.ux.form.HtmlEditor.SpecialCharacters', {
         var cmp = this.cmp;
         var btn = this.cmp.getToolbar().add({
             iconCls: 'x-edit-char',
-            handler: function(){
-                if (!this.chars.length) {
-                    if (this.specialChars.length) {
-                        Ext.each(this.specialChars, function(c, i){
-                            this.chars[i] = ['&#' + c + ';'];
-                        }, this);
-                    }
-                    for (i = this.charRange[0]; i < this.charRange[1]; i++) {
-                        this.chars.push(['&#' + i + ';']);
-                    }
-                }
-                var charStore = Ext.create('Ext.data.ArrayStore',{
-                    fields  : ['char'],
-                    data    : this.chars
-                });
-                this.charWindow = Ext.create('Ext.window.Window',{
-                    title       : this.langTitle,
-                    width       : 436,
-                    height      : 245,
-                    layout      : 'fit',
-                    plain       : true,
-                    items       : [{
-                        xtype       : 'dataview',
-                        store       : charStore,
-                        itemId      : 'charView',
-                        autoHeight  : true,
-                        multiSelect : true,
-                        tpl         : new Ext.XTemplate('<tpl for="."><div class="char-item">{char}</div></tpl><div class="x-clear"></div>'),
-                        overItemCls : 'char-over',
-                        itemSelector: 'div.char-item',
-                        trackOver   : true,
-                        listeners: {
-                            itemdblclick: function(view, record, item, index, e, ePpts){
-                                this.insertChar(record.get('char'));
-                                this.charWindow.close();
-                            },
-                            scope: this
-                        }
-                    }],
-                    buttons: [{
-                        text: this.langInsert,
-                        handler: function(){
-                            var dv = this.charWindow.down('#charView');
-                            Ext.each(dv.getSelectedNodes(), function(node){
-                                var c = dv.getRecord(node).get('char');
-                                  this.insertChar(c);
-                            }, this);
-                            this.charWindow.close();
-                        },
-                        scope: this
-                    }, {
-                        text: this.langCancel,
-                        handler: function(){
-                            this.charWindow.close();
-                        },
-                        scope: this
-                    }]
-                });
-                this.charWindow.show();
-            },
+            handler: showEspeciaCharTable,
             scope: this,
             tooltip: {
-                title: this.langTitle
+                title: this.langTitle, 
+                text: this.langToolTip
             },
             overflowText: this.langTitle
         });
+        function showEspeciaCharTable(){
+            if (!this.chars.length) {
+                if (this.specialChars.length) {
+                    Ext.each(this.specialChars, function(c, i){
+                        this.chars[i] = ['&#' + c + ';'];
+                    }, this);
+                }
+                for (i = this.charRange[0]; i < this.charRange[1]; i++) {
+                    this.chars.push(['&#' + i + ';']);
+                }
+            }
+            var charStore = Ext.create('Ext.data.ArrayStore',{
+                fields  : ['char'],
+                data    : this.chars
+            });
+            this.charWindow = Ext.create('Ext.window.Window',{
+                title       : this.langTitle,
+                width       : 436,
+                height      : 245,
+                layout      : 'fit',
+                plain       : true,
+                items       : [{
+                    xtype       : 'dataview',
+                    store       : charStore,
+                    itemId      : 'charView',
+                    autoHeight  : true,
+                    multiSelect : true,
+                    tpl         : new Ext.XTemplate('<tpl for="."><div class="char-item">{char}</div></tpl><div class="x-clear"></div>'),
+                    overItemCls : 'char-over',
+                    itemSelector: 'div.char-item',
+                    trackOver   : true,
+                    listeners: {
+                        itemdblclick: function(view, record, item, index, e, ePpts){
+                            this.insertChar(record.get('char'));
+                            this.charWindow.close();
+                        },
+                        scope: this
+                    }
+                }],
+                buttons: [{
+                    text: this.langInsert,
+                    handler: function(){
+                        var dv = this.charWindow.down('#charView');
+                        Ext.each(dv.getSelectedNodes(), function(node){
+                            var c = dv.getRecord(node).get('char');
+                              this.insertChar(c);
+                        }, this);
+                        this.charWindow.close();
+                    },
+                    scope: this
+                }, {
+                    text: this.langCancel,
+                    handler: function(){
+                        this.charWindow.close();
+                    },
+                    scope: this
+                }]
+            });
+            this.charWindow.show();
+        }
     },
     /**
      * Insert a single special character into the document.

@@ -106,7 +106,7 @@ Ext.define('Ext.ux.form.HtmlEditor.Word', {
     // private
     onRender: function() {
 
-        this.cmp.getToolbar().add({
+        this.cmp.getToolbar().add( '-', {
             iconCls: 'x-edit-wordpaste',
             pressed: true,
             handler: function(t){
@@ -115,7 +115,8 @@ Ext.define('Ext.ux.form.HtmlEditor.Word', {
             },
             scope: this,
             tooltip: {
-                text: this.langToolTip
+                text: this.langToolTip, 
+                title: this.langTitle 
             },
             overflowText: this.langTitle
         });

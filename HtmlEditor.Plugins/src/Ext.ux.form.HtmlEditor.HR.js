@@ -11,6 +11,7 @@ Ext.define('Ext.ux.form.HtmlEditor.HR', {
 
     // HR language text
     langTitle   : 'Horizontal Rule',
+    langToolTip : 'Insert horizontal rule with configurable lenght',
     langHelp    : 'Enter the width of the Rule in percentage<br/> followed by the % sign at the end, or to<br/> set a fixed width ommit the % symbol.',
     langInsert  : 'Insert',
     langCancel  : 'Cancel',
@@ -31,77 +32,80 @@ Ext.define('Ext.ux.form.HtmlEditor.HR', {
     // private
     onRender: function(){
         var cmp = this.cmp;
-        var btn = this.cmp.getToolbar().add({
+        var btn = this.cmp.getToolbar().add('-',{
             iconCls : 'x-edit-hr',
-            handler : function(){
-                if (!this.hrWindow) {
-                    this.hrWindow = Ext.create('Ext.window.Window',{
-                        title       : this.langTitle,
-                        width       : 250,
-                        closeAction : 'hide',
-                        items       : [{
-                            xtype       : 'form',
-                            itemId      : 'insert-hr',
-                            border      : false,
-                            plain       : true,
-                            bodyStyle   : 'padding: 10px;',
-                            labelWidth  : 60,
-                            labelAlign  : 'right',
-                            items       : [{
-                                xtype   : 'label',
-                                html    : this.langHelp + '<br/>&nbsp;'
-                            }, {
-                                xtype       : 'textfield',
-                                maskRe      : /[0-9]|%/,
-                                regex       : /^[1-9][0-9%]{1,3}/,
-                                fieldLabel  : this.langWidth,
-                                name        : 'hrwidth',
-                                anchor      : '-20px;',
-                                value       : this.defaultHRWidth,
-                                listeners   : {
-                                    specialkey: function(f, e){
-                                        if ((e.getKey() == e.ENTER || e.getKey() == e.RETURN) && f.isValid()) {
-                                            this.doInsertHR();
-                                        }
-                                    },
-                                    scope: this
-                                }
-                            }]
-                        }],
-                        buttons: [{
-                            text    : this.langInsert,
-                            handler : function(){
-                                var frm = this.hrWindow.getComponent('insert-hr').getForm();
-                                if (frm.isValid()) {
-                                    this.doInsertHR();
-                                } else {
-                                    frm.findField('hrwidth').getEl().frame();
-                                }
-                            },
-                            scope   : this
-                        }, {
-                            text    : this.langCancel,
-                            handler : function(){
-                                this.hrWindow.hide();
-                            },
-                            scope   : this
-                        }],
-                        listeners   : {
-                            render  : (Ext.isGecko) ? this.focusHRLong : this.focusHR,
-                            show    : this.focusHR,
-                            move    : this.focusHR,
-                            scope   : this
-                        }
-                    });
-                }
-                this.hrWindow.show();
-            },
+            handler : showHTWin,
             scope   : this,
             tooltip : {
-                title: this.langInsert + ' ' + this.langTitle
+                title: this.langTitle, 
+                text: this.langToolTip
             },
             overflowText: this.langTitle
         });
+        
+        function showHTWin(){
+            if (!this.hrWindow) {
+                this.hrWindow = Ext.create('Ext.window.Window',{
+                    title       : this.langTitle,
+                    width       : 250,
+                    closeAction : 'hide',
+                    items       : [{
+                        xtype       : 'form',
+                        itemId      : 'insert-hr',
+                        border      : false,
+                        plain       : true,
+                        bodyStyle   : 'padding: 10px;',
+                        labelWidth  : 60,
+                        labelAlign  : 'right',
+                        items       : [{
+                            xtype   : 'label',
+                            html    : this.langHelp + '<br/>&nbsp;'
+                        }, {
+                            xtype       : 'textfield',
+                            maskRe      : /[0-9]|%/,
+                            regex       : /^[1-9][0-9%]{1,3}/,
+                            fieldLabel  : this.langWidth,
+                            name        : 'hrwidth',
+                            anchor      : '-20px;',
+                            value       : this.defaultHRWidth,
+                            listeners   : {
+                                specialkey: function(f, e){
+                                    if ((e.getKey() == e.ENTER || e.getKey() == e.RETURN) && f.isValid()) {
+                                        this.doInsertHR();
+                                    }
+                                },
+                                scope: this
+                            }
+                        }]
+                    }],
+                    buttons: [{
+                        text    : this.langInsert,
+                        handler : function(){
+                            var frm = this.hrWindow.getComponent('insert-hr').getForm();
+                            if (frm.isValid()) {
+                                this.doInsertHR();
+                            } else {
+                                frm.findField('hrwidth').getEl().frame();
+                            }
+                        },
+                        scope   : this
+                    }, {
+                        text    : this.langCancel,
+                        handler : function(){
+                            this.hrWindow.hide();
+                        },
+                        scope   : this
+                    }],
+                    listeners   : {
+                        render  : (Ext.isGecko) ? this.focusHRLong : this.focusHR,
+                        show    : this.focusHR,
+                        move    : this.focusHR,
+                        scope   : this
+                    }
+                });
+            }
+            this.hrWindow.show();
+        }
     },
     // private
     focusHRLong: function(w){
