@@ -2,7 +2,8 @@
  * @author Shea Frederick - http://www.vinylfox.com
  * @class Ext.ux.form.HtmlEditor.Font
  * @extends Ext.util.Observable
- * <p>A plugin that creates a menu on the HtmlEditor for selecting a font. Uses the HtmlEditors default font settings which can be overriden on that component to change the list of fonts or default font.</p>
+ * <p>A plugin that creates a menu on the HtmlEditor for selecting a font. 
+ * Uses the HtmlEditors default font settings which can be overriden on that component to change the list of fonts or default font.</p>
  *
  * ExtJS4 adaptation by René Bartholomay <rene.bartholomay@gmx.de>
  */
