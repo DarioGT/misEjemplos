@@ -39,3 +39,24 @@ getSelectedRecordAsParameters : function(){
 		return params;
 }
 });
+
+
+// ----------------------------------------------------------------------------------------------
+// Set Selected Row 
+//----------------------------------------------------------------------------------------------
+
+var grid = Ext.create('Ext.grid.Panel', {
+    store: store,
+    stateful: true,
+    stateId: 'stateGrid',
+    
+    
+    bbar: [
+        { xtype: 'button', text: 'Click me to select first row', handler: function(){
+        grid.getSelectionModel().select(0);
+        } }
+],
+  
+http://jsfiddle.net/molecule/2BhfY/3/
+    
+    
