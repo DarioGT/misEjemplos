@@ -204,10 +204,8 @@ Ext.onReady(function() {
                                                     }, this);
                                     var trigger1 = Ext.get("trigger1" + id);
                                     var trigger2 = Ext.get("trigger2" + id);
-                                    trigger1
-                                            .addClsOnOver('x-form-trigger-over');
-                                    trigger2
-                                            .addClsOnOver('x-form-trigger-over');
+                                    trigger1.addClsOnOver('x-form-trigger-over');
+                                    trigger2.addClsOnOver('x-form-trigger-over');
                                 }
                             });
             

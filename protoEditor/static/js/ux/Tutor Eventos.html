@@ -1,0 +1,322 @@
+<div>
+    <font face="verdana"><b>DOM node event handling</b></font>
+</div>
+<div>
+    <font face="sans-serif"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">First of all you wouldn't want to work with DOM node directly. Instead you probably would want to utilize Ext.Element interface. For purpose of assigning event handlerElement.addListener and Element.on (these are equivalent) were created. So, for example, if we have such html:</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <span style="font-size: 12px; "><font face="'courier new'"><u>&lt;div id="test_node"&gt;&lt;/div&gt;</u></font></span>
+</div>
+<br><span style="font-family: arial; font-size: 12px; ">and we want add click event handler.</span><br>
+<div>
+    <font face="arial"><span style="font-size: 12px;">Let's retrieve Element:</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <span style="font-size: 12px; "><font face="'courier new'"><u>var el = Ext.get('test_node');</u></font></span>
+</div>
+<br><span style="font-family: arial; font-size: 12px; ">Now let's check docs for click event. It's handler may have three parameters:</span><br>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">click( Ext.EventObject e, HTMLElement t, Object eOpts )</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <span style="font-size: 12px; "><font face="arial">Knowing all this </font><font face="'courier new'">stuff</font><font face="arial"> we can assign handler:</font></span>
+</div>
+<div>
+    <font face="'courier new'"><u><span style="font-size: 12px; ">
+            <br>
+        </span>
+</u></font></div>
+<div>
+    <font face="'courier new'"><span style="font-size: 12px; ">// &nbsp; &nbsp; &nbsp; event name &nbsp; &nbsp; &nbsp;event handler</span>
+</font></div>
+<div>
+    <font face="'courier new'"><span style="font-size: 12px; ">el.<b>on</b>( &nbsp; &nbsp;'click' &nbsp; &nbsp; &nbsp; &nbsp;, function(e, t, eOpts){</span>
+</font></div>
+<div>
+    <font face="'courier new'"><span style="font-size: 12px;">&nbsp; // handling event here</span>
+</font></div>
+<div>
+    <span style="font-size: 12px;"><font face="'courier new'">});</font></span></div><br><br>
+<div>
+    <font face="arial"><b>Widgets event handling</b></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">Widgets event handling is pretty much similar to DOM nodes event handling.</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">First of all in widgets event handling is realized by utilizing Ext.util.Observable mixin. In order to handle events properly your widget must containg Ext.util.Observable as a mixin. All built-in widgets (like Panel, Form, Tree, Grid, ...) has Ext.util.Observable as a mixin by default.</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">For widgets there are two ways for assigning handlers. The first one - is to use on method (oraddListener). Let's for example create Button widget and assign click event to it. First of all you should check event's docs for handler's arguments:</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">click( Ext.button.Button this, Event e, Object eOpts )</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">Now let's use on:</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">var myButton = Ext.create('Ext.button.Button', {</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; text: 'Test button'</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">});</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">myButton.on('click', function(btn, e, eOpts) {</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; // event handling here</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; console.log(btn, e, eOpts);</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">});</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">The second way is to use widget's listeners config:</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">var myButton = Ext.create('Ext.button.Button', {</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; text: 'Test button',</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; listeners : {</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; &nbsp; click: function(btn, e, eOpts) {</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; &nbsp; &nbsp; // event handling here</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; &nbsp; &nbsp; console.log(btn, e, eOpts);</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; &nbsp; }</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; }</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">});</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">Notice that Button widget is a special kind of widgets. Click event can be assigned to this widget by using handler config:</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">var myButton = Ext.create('Ext.button.Button', {</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; text: 'Test button',</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; handler : function(btn, e, eOpts) {</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; &nbsp; // event handling here</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; &nbsp; console.log(btn, e, eOpts);</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; }</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">});</span></font></div><br><br>
+<div>
+    <font face="arial"><b>Custom events firing</b></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">First of all you need to register event using addEvents method:</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">myButton.addEvents('myspecialevent1', 'myspecialevent2', 'myspecialevent3', /* ... */);</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">To fire your event use fireEvent method:</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">myButton.fireEvent('myspecialevent1', arg1, arg2, arg3, /* ... */);</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">arg1, arg2, arg3, /* ... */ will be passed into handler. Now we can handle your event:</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">myButton.on('myspecialevent1', function(arg1, arg2, arg3, /* ... */) {</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; // event handling here</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; console.log(arg1, arg2, arg3, /* ... */);</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">});</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">It's worse to mention that the best place for inserting addEvents method call is widget'sinitComponent method when you are defining new widget:</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">Ext.define('MyCustomButton', {</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; extend: 'Ext.button.Button',</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; // ... other configs,</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; initComponent: function(){</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; &nbsp; this.addEvents('myspecialevent1', 'myspecialevent2', 'myspecialevent3', /* ... */);</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; &nbsp; // ...</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; &nbsp; this.callParent(arguments);</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; }</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">});</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">var myButton = Ext.create('MyCustomButton', { /* configs */ });</span></font></div><br><br>
+<div>
+    <font face="arial"><b>Preventing event bubbling</b></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">To prevent bubbling you can return false or use Ext.EventObject.preventDefault(). In order to prevent browser's default action use Ext.EventObject.stopPropagation().</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">For example let's assign click event handler to our button. And if not left button was clicked prevent default browser action:</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">
+            <br>
+        </span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">myButton.on('click', function(btn, e){</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; if (e.button !== 0)</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">&nbsp; &nbsp; e.preventDefault();</span></font>
+</div>
+<div>
+    <font face="arial"><span style="font-size: 12px;">});</span></font>
+</div>
+<div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12px; ">
+    <br>
+</div>
