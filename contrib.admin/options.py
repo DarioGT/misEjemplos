@@ -1,3 +1,5 @@
+#Rutinas de ejecucion del admin  
+
 from django import forms, template
 from django.forms.formsets import all_valid
 from django.forms.models import (modelform_factory, modelformset_factory,

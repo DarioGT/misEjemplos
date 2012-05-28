@@ -134,17 +134,17 @@ Ext.define('Writer.Grid', {
             
 		   viewConfig: {
 			   
-                listeners: {
-                    
-                    // Esto maneja los vinculos en los campos 
-                    cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
-                        var linkClicked = (e.target.tagName == 'A');
-                        var clickedDataIndex = view.panel.headerCt.getHeaderAtIndex(cellIndex).dataIndex;
-                        if (linkClicked && clickedDataIndex ) {
-                            alert(record.get('id'));
-                        }
-                    }
-                }, 			   
+//                listeners: {
+//                    
+//                    // Esto maneja los vinculos en los campos 
+//                    cellclick: function (view, cell, cellIndex, record, row, rowIndex, e) {
+//                        var linkClicked = (e.target.tagName == 'A');
+//                        var clickedDataIndex = view.panel.headerCt.getHeaderAtIndex(cellIndex).dataIndex;
+//                        if (linkClicked && clickedDataIndex ) {
+//                            alert(record.get('id'));
+//                        }
+//                    }
+//                }, 			   
 			   
 			   
                 //	Esto permite marcar los registros despues de la actualizacion 
