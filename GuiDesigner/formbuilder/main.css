@@ -1,0 +1,70 @@
+
+
+.typeBoolTrue {
+	color:green;
+}
+.typeBoolFalse {
+	color:red;
+}
+.typeObject {
+	color: blue;
+	font-style: italic;
+}
+.resizeLayer {
+	background:red;
+	text-align:center;
+	font:bold 10px arial;
+	overflow:hidden;
+}
+.component {
+	-moz-border-radius:3px;
+	height: 35px;
+	width: 50px;
+	border: solid black 2px;
+	text-align:center;
+	color:black;
+	font:normal 12px arial;
+	background: #CCCCFF url(bg1.png) repeat-x scroll center bottom;
+	overflow:hidden;
+	display:block;
+	cursor:pointer;
+}
+#FormBuilderComponentSelector .component {
+	margin: 5px;
+	float: left;
+}
+#FormBuilderComponentSelector .component.over {
+	border-color:navy;
+}
+#FormBuilderComponentSelector .component.selected {
+	border-color:blue;
+}
+
+.selectedElementParent *, .selectedElementParent {
+	background:#ccf;
+}
+.selectedElement *, .selectedElement {
+	background:#ffc;
+}
+
+.icon-reset { background-image:url(icons/asterisk_orange.png) !important; }
+.icon-help { background-image:url(icons/help.png) !important; }
+.icon-time { background-image:url(icons/time.png) !important; }
+.icon-delete { background-image:url(icons/delete.png) !important; }
+.icon-add { background-image:url(icons/add.png) !important; }
+
+.icon-el { background-image:url(icons/application.png) !important; }
+.icon-deleteEl { background-image:url(icons/application_delete.png) !important; }
+.icon-addEl { background-image:url(icons/application_add.png) !important; }
+.icon-dupEl { background-image:url(icons/application_double.png) !important; }
+.icon-editEl { background-image:url(icons/application_edit.png) !important; }
+
+.icon-undo { background-image:url(icons/arrow_undo.png) !important; }
+.icon-update { background-image:url(icons/arrow_refresh.png) !important; }
+.icon-resize { background-image:url(icons/arrow_inout.png) !important; }
+
+
+
+
+
+/* vim600: set foldenable foldmethod=marker foldmarker={,} foldlevel=1 : */
