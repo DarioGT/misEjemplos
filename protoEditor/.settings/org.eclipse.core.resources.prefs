@@ -1,4 +1,26 @@
-#Sat Feb 25 15:43:11 EST 2012
+#Sun Feb 24 17:42:53 EST 2013
 eclipse.preferences.version=1
 encoding//contact/decorators.py=utf-8
 encoding//contact/views.py=utf-8
+encoding//demoApps/CategoryCle/models.py=utf-8
+encoding//demoApps/TCO/models.py=utf-8
+encoding//demoApps/bestingenomics/models.py=utf-8
+encoding//demoApps/demo/models.py=utf-8
+encoding//demoApps/fpdf/__init__.py=utf-8
+encoding//demoApps/fpdf/fonts.py=latin1
+encoding//demoApps/fpdf/fpdf.py=latin1
+encoding//demoApps/fpdf/html.py=latin1
+encoding//demoApps/protoDict/admin_Model.py=utf-8
+encoding//demoApps/protoDict/admin_PropertyMod.py=utf-8
+encoding//demoApps/protoDict/models.py=utf-8
+encoding//demoApps/protoExt/admin_Concept.py=utf-8
+encoding//demoApps/protoExt/models.py=utf-8
+encoding//demoApps/protoFace/models.py=utf-8
+encoding//demoApps/protoOrganizer/models.py=utf-8
+encoding//demoApps/pruebas/admin.py=utf-8
+encoding//demoApps/pruebas/models.py=utf-8
+encoding//demoApps/pruebas/protoGetTree.py=utf-8
+encoding//demoApps/shiny/admin.py=utf-8
+encoding//demoApps/shiny/models.py=utf-8
+encoding//demoApps/snippets/jsonField02.py=utf-8
+encoding//demoApps/snippets/tmpLogSecure.py=utf-8
